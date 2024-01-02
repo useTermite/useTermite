@@ -1,1 +1,86 @@
-[{"D:\\useTermite\\src\\App.tsx":"1","D:\\useTermite\\src\\hooks\\useNetworkState.ts":"2","D:\\useTermite\\src\\hooks\\useClickOutside.ts":"3"},{"size":328,"mtime":1704217328377,"results":"4","hashOfConfig":"5"},{"size":846,"mtime":1704141522112,"results":"6","hashOfConfig":"5"},{"size":1091,"mtime":1704217237399,"results":"7","hashOfConfig":"5"},{"filePath":"8","messages":"9","suppressedMessages":"10","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0},"13tnnjz",{"filePath":"11","messages":"12","suppressedMessages":"13","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0},{"filePath":"14","messages":"15","suppressedMessages":"16","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0},"D:\\useTermite\\src\\App.tsx",[],[],"D:\\useTermite\\src\\hooks\\useNetworkState.ts",[],[],"D:\\useTermite\\src\\hooks\\useClickOutside.ts",[],[]]
+[
+  {
+    "D:\\useTermite\\src\\App.tsx": "1",
+    "D:\\useTermite\\src\\hooks\\useNetworkState.ts": "2",
+    "D:\\useTermite\\src\\hooks\\useClickOutside.ts": "3",
+    "D:\\useTermite\\src\\hooks\\useCookies.ts": "4"
+  },
+  {
+    "size": 328,
+    "mtime": 1704217328377,
+    "results": "5",
+    "hashOfConfig": "6"
+  },
+  {
+    "size": 846,
+    "mtime": 1704141522112,
+    "results": "7",
+    "hashOfConfig": "6"
+  },
+  {
+    "size": 1091,
+    "mtime": 1704217237399,
+    "results": "8",
+    "hashOfConfig": "6"
+  },
+  {
+    "size": 1634,
+    "mtime": 1704217837320,
+    "results": "9",
+    "hashOfConfig": "10"
+  },
+  {
+    "filePath": "11",
+    "messages": "12",
+    "suppressedMessages": "13",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  },
+  "13tnnjz",
+  {
+    "filePath": "14",
+    "messages": "15",
+    "suppressedMessages": "16",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  },
+  {
+    "filePath": "17",
+    "messages": "18",
+    "suppressedMessages": "19",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  },
+  {
+    "filePath": "20",
+    "messages": "21",
+    "suppressedMessages": "22",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  },
+  "1p66ryz",
+  "D:\\useTermite\\src\\App.tsx",
+  [],
+  [],
+  "D:\\useTermite\\src\\hooks\\useNetworkState.ts",
+  [],
+  [],
+  "D:\\useTermite\\src\\hooks\\useClickOutside.ts",
+  [],
+  [],
+  "D:\\useTermite\\src\\hooks\\useCookies.ts",
+  [],
+  []
+]
