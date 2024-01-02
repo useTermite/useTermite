@@ -12,20 +12,20 @@
 	<a href= "https://www.npmjs.com/package/use-custom-hooks/">
 		<img alt="npm Downloads/Week" src="https://img.shields.io/npm/dw/use-custom-hooks?style=for-the-badge">
 	</a>
-	<a href="https://github.com/aromalanil/useCustomHooks/issues">
-		<img alt="GitHub issues" src="https://img.shields.io/github/issues/aromalanil/useCustomHooks?style=for-the-badge">
+	<a href="https://github.com/useTermite/useTermite/issues">
+		<img alt="GitHub issues" src="https://img.shields.io/github/issues/useTermite/useTermite?style=for-the-badge">
 	</a>
-  <a href="https://github.com/aromalanil/useCustomHooks/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/aromalanil/useCustomHooks?style=for-the-badge">
+  <a href="https://github.com/aromalanil/useTermite/useTermite/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/useTermite/useTermite?style=for-the-badge">
   </a>
-	<a href="https://github.com/aromalanil/useCustomHooks/blob/master/LICENSE">
-		<img alt="GitHub License" src="https://img.shields.io/github/license/aromalanil/useCustomHooks?style=for-the-badge">
+	<a href="https://github.com/useTermite/useTermite/blob/master/LICENSE">
+		<img alt="GitHub License" src="https://img.shields.io/github/license/useTermite/useTermite?style=for-the-badge">
 	</a>
   </br>
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-<a href="https://github.com/aromalanil/useTermite/graphs/contributors"><img src="https://img.shields.io/badge/all_contributors-6-orange.svg?style=for-the-badge" /></a>
+<a href="https://github.com/useTermite/useTermite/graphs/contributors"><img src="https://img.shields.io/badge/all_contributors-6-orange.svg?style=for-the-badge" /></a>
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
