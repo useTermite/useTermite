@@ -1,20 +1,9 @@
-import useClickOutside from './hooks/useClickOutside'
-import useNetworkState from './hooks/useNetworkState'
-import { useCookies } from './hooks/useCookies'
-import useOrientation from './hooks/useOrientation'
-import useDevice from './hooks/useDevice'
-import useMediaQuery from './hooks/useMediaQuery'
-import useKeyPress from './hooks/useKeyPress'
-import useLocation from './hooks/useLocation'
-import useIsFirstRender from './hooks/useIsFirstRender'
-export {
-  useClickOutside,
-  useNetworkState,
-  useCookies,
-  useOrientation,
-  useDevice,
-  useMediaQuery,
-  useKeyPress,
-  useLocation,
-  useIsFirstRender
-}
+export { default as useClickOutside } from './hooks/useClickOutside'
+export { default as useNetworkState } from './hooks/useNetworkState'
+export { default as useCookies } from './hooks/useCookies'
+export { default as useOrientation } from './hooks/useOrientation'
+export { default as useDevice } from './hooks/useDevice'
+export { default as useMediaQuery } from './hooks/useMediaQuery'
+export { default as useKeyPress } from './hooks/useKeyPress'
+export { default as useLocation } from './hooks/useLocation'
+export { default as useIsFirstRender } from './hooks/useIsFirstRender'
