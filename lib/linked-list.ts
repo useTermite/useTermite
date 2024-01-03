@@ -43,7 +43,6 @@ class LinkedList<T> {
 
   find(value: T): ListNode<T> | null {
     if (!this.head) {
-      console.log('list is empty!')
       return null
     }
 
@@ -75,7 +74,7 @@ class LinkedList<T> {
 
   delete(value: T): void {
     if (!this.head) {
-      return console.log('list is empty')
+      return
     }
 
     while (this.head && this.head.value === value) {
@@ -110,7 +109,6 @@ class LinkedList<T> {
 
   pop(): T | null {
     if (!this.head) {
-      console.log('list is empty!')
       return null
     }
 
