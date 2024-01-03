@@ -25,7 +25,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-<a href="https://github.com/useTermite/useTermite/graphs/contributors"><img src="https://img.shields.io/badge/all_contributors-6-orange.svg?style=for-the-badge" /></a>
+<a href="https://github.com/useTermite/useTermite/graphs/contributors"><img src="https://img.shields.io/badge/all_contributors-2-orange.svg?style=for-the-badge" /></a>
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
