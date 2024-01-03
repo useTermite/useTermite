@@ -839,13 +839,17 @@ None.
 
 ### Return value
 
-`{ insertAtEnd, removeFromEnd, find, traverse, size }`
+`{ append, list, size, pop, clear, insertAfter, deleteItem, shift, prepend }`
 
-1. `insertAtEnd` (_function_): Function to insert an item at the end of the list.
-2. `removeFromEnd` (_function_): Function to remove and return the last item from the list.
-3. `find` (_function_): Function to find and return an item by its value.
-4. `traverse` (_function_): Function to return all items in the list as an array.
-5. `size` (_number_): The current number of items in the list.
+1. `append` (_function_): Function to insert an item at the end of the list.
+2. `pop` (_function_): Function to remove and return the last item from the list.
+3. `list` (_array_): Function to return all items in the list as an array.
+4. `size` (_number_): The current number of items in the list.
+5. `clear` (_function_): Function to clear the list.
+6. `insertAfter` (_function_): Function to insert new value after a target value.
+7. `deleteItem` (_function_): Function to delete a specific value from
+8. `shift` (_function_): Function to remove the first element.
+9. `prepend` (_function_): Function to add new Element to front of the list.
 
 </br>
 
