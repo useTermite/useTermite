@@ -1,7 +1,7 @@
 {
   "name": "use-termite",
   "private": false,
-  "version": "1.0.9",
+  "version": "1.0.10",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -37,7 +37,7 @@
     ]
   },
   "description": "a collection of powerful custom hooks designed to simplify and enhance your React.js projects.",
-  "main": "./src/hooks/index.ts",
+  "main": "index.ts",
   "directories": {
     "doc": "docs"
   },
