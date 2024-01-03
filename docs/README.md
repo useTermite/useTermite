@@ -724,9 +724,9 @@ None.
 
 </br>
 
-## 🗃️ useStack
+## 💾 useStack
 
-Custom hook to implement and interact with a stack data structure in your React components. It provides the functionality to push, pop, peek, and check the size of the stack.
+Custom hook that provides a convenient way to interact with a stack data structure within your React components. It offers a variety of methods to manipulate the stack, similar to a standard stack implementation but with React state management integrated. This ensures your component re-renders when the stack changes.
 
 ### Usage
 
@@ -735,49 +735,57 @@ import React from 'react'
 import { useStack } from 'use-termite'
 
 const StackComponent = () => {
-  const { push, pop, peek, size, isEmpty } = useStack()
+  const { stack, push, pop, clear, isEmpty, peek, printStack, size } = useStack(['initial', 'values'])
 
   const handlePush = () => {
-    const newItem = `Item ${size + 1}`
-    push(newItem)
-    console.log(`Pushed ${newItem}`)
+    push('New Item')
   }
 
   const handlePop = () => {
-    const poppedItem = pop()
-    console.log(`Popped ${poppedItem}`)
+    pop()
   }
 
   return (
     <div>
       <button onClick={handlePush}>Push</button>
-      <button onClick={handlePop} disabled={isEmpty}>
+      <button onClick={handlePop} disabled={isEmpty()}>
         Pop
       </button>
-      <p>Top item: {peek() || 'Stack is empty'}</p>
-      <p>Stack size: {size}</p>
+      <button onClick={clear}>Clear</button>
+      <div>Top of stack: {peek()}</div>
+      <div>Stack size: {size}</div>
+      <div>Full stack: {printStack()}</div>
     </div>
   )
 }
 ```
 
-In this example, `useStack` is used to create a simple stack structure. You can push new items to the stack, pop the top item off the stack, and view the current top item and the size of the stack.
+</br>
 
 ### Parameters
 
-None.
+1. `initialValue` (_any[]_): Initial array of items to populate the stack.
 
 ### Return value
 
-`{ push, pop, peek, size, isEmpty }`
+An object containing:
 
-1. `push` (_function_): Function to add an item to the top of the stack.
-2. `pop` (_function_): Function to remove and return the top item from the stack.
-3. `peek` (_function_): Function to return the top item of the stack without removing it.
-4. `size` (_number_): The current number of items in the stack.
-5. `isEmpty` (_boolean_): Boolean indicating whether the stack is empty.
+1. `stack` (_any[]_): The current state of the stack.
+2. `push` (_function_): Method to push an item onto the stack.
+3. `pop` (_function_): Method to pop an item off the stack.
+4. `clear` (_function_): Method to clear the stack.
+5. `isEmpty` (_function_): Method to check if the stack is empty.
+6. `peek` (_function_): Method to peek at the top item of the stack without removing it.
+7. `printStack` (_function_): Method to return a string representation of the stack.
+8. `size` (_number_): The current size of the stack.
 
 </br>
+
+### Notes
+
+- `useStack` utilizes the custom `Stack` class from the provided 'lib/stack' to manage stack operations. This class should implement standard stack methods (`push`, `pop`, `peek`, `isEmpty`, `clear`) and maintain its own internal items array.
+- The hook uses React's `useState` and `useEffect` to manage and re-render the stack state within your component.
+- It's optimized to prevent unnecessary re-renders and only updates the component when stack operations are performed.
 
 ## 🔗 useList
 
@@ -853,9 +861,9 @@ None.
 
 </br>
 
-## 🚶 useQueue
+## 🗂 useQueue
 
-Custom hook to implement and interact with a queue data structure in your React components. A queue follows the First In, First Out (FIFO) principle. It provides functionalities to enqueue (add), dequeue (remove), peek (view the first element), and check the size of the queue.
+Custom hook that provides a convenient way to interact with a queue data structure within your React components. It leverages a `Queue` class to manage the queue operations and integrates with React's state management to ensure the component re-renders when the queue changes.
 
 ### Usage
 
@@ -864,47 +872,49 @@ import React from 'react'
 import { useQueue } from 'use-termite'
 
 const QueueComponent = () => {
-  const { enqueue, dequeue, peek, size, isEmpty } = useQueue()
+  const { queue, enqueue, dequeue, size } = useQueue(['first', 'second'])
 
   const handleEnqueue = () => {
-    const newItem = `Item ${size + 1}`
-    enqueue(newItem)
-    console.log(`Enqueued ${newItem}`)
+    enqueue('New Item')
   }
 
   const handleDequeue = () => {
-    const removedItem = dequeue()
-    console.log(`Dequeued ${removedItem}`)
+    dequeue()
   }
 
   return (
     <div>
       <button onClick={handleEnqueue}>Enqueue</button>
-      <button onClick={handleDequeue} disabled={isEmpty}>
+      <button onClick={handleDequeue} disabled={size === 0}>
         Dequeue
       </button>
-      <p>First item: {peek() || 'Queue is empty'}</p>
-      <p>Queue size: {size}</p>
+      <div>Queue size: {size}</div>
+      <ul>
+        {queue.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </div>
   )
 }
 ```
 
-In this example, `useQueue` is used to create and manipulate a queue. You can enqueue items to the end, dequeue items from the front, and view the first item and the size of the queue.
+In this example, `useQueue` is used to manage a queue of values. The hook initializes the queue with initial values if provided. It offers functions to `enqueue` (add an item to the end of the queue) and `dequeue` (remove an item from the front of the queue).
 
 ### Parameters
 
-None.
+1. `initialValue` (_any[]_): Initial array of items to populate the queue.
 
 ### Return value
 
-`{ enqueue, dequeue, peek, size, isEmpty }`
+An object containing:
 
-1. `enqueue` (_function_): Function to add an item to the end of the queue.
-2. `dequeue` (_function_): Function to remove and return the first item from the queue.
-3. `peek` (_function_): Function to return the first item of the queue without removing it.
-4. `size` (_number_): The current number of items in the queue.
-5. `isEmpty` (_boolean_): Boolean indicating whether the queue is empty.
+1. `queue` (_any[]_): The current state of the queue as an array.
+2. `enqueue` (_function_): Method to add an item to the end of the queue.
+3. `dequeue` (_function_): Method to remove an item from the front of the queue.
+4. `size` (_number_): The current size of the queue.
+
+### Notes
 
 </br>
 
