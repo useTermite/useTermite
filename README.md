@@ -4,13 +4,13 @@
 	<br/>
 	<div align="center">
   <a href= "https://www.npmjs.com/package/use-termite/v/latest">
-		<img alt="npm" src="https://img.shields.io/npm/v/use-custom-hooks?style=for-the-badge">
+		<img alt="npm" src="https://img.shields.io/npm/v/use-termite?style=for-the-badge">
 	</a>
 	<a href= "https://www.npmjs.com/package/use-termite/">
-		<img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/use-custom-hooks?style=for-the-badge">
+		<img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/use-termite?style=for-the-badge">
 	</a>
 	<a href= "https://www.npmjs.com/package/use-termite/">
-		<img alt="npm Downloads/Week" src="https://img.shields.io/npm/dw/use-custom-hooks?style=for-the-badge">
+		<img alt="npm Downloads/Week" src="https://img.shields.io/npm/dw/use-termite?style=for-the-badge">
 	</a>
 	<a href="https://github.com/useTermite/useTermite/issues">
 		<img alt="GitHub issues" src="https://img.shields.io/github/issues/useTermite/useTermite?style=for-the-badge">
