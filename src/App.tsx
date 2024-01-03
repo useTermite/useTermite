@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import useKeyPress from './hooks/useKeyPress'
-
 const App = () => {
   const [show, setShow] = useState(true)
 
