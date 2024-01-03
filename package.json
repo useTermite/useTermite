@@ -1,7 +1,7 @@
 {
-  "name": "usetermite",
-  "private": true,
-  "version": "0.0.0",
+  "name": "use-termite",
+  "private": false,
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -39,5 +39,26 @@
       "eslint --cache --fix",
       "prettier --write"
     ]
-  }
+  },
+  "description": "a collection of powerful custom hooks designed to simplify and enhance your React.js projects.",
+  "main": "./src/hooks/index.ts",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/useTermite/useTermite.git"
+  },
+  "keywords": [
+    "use-termite",
+    "react-hooks",
+    "custom-hooks",
+    "customhooks"
+  ],
+  "author": "erfundev, masoomehdev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/useTermite/useTermite/issues"
+  },
+  "homepage": "https://github.com/useTermite/useTermite#readme"
 }
