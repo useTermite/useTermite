@@ -3,7 +3,7 @@
     <p>`useTermite` is a collection of powerful custom hooks designed to simplify and enhance your React.js projects. From managing network states and localash to handling complex data structures, `useTermite` provides a wide range of functionalities to cover your development needs.</p>
 	<br/>
 	<div align="center">
-  <a href= "https://www.npmjs.com/package/use-custom-hooks/v/latest">
+  <a href= "https://www.npmjs.com/package/use-termite/v/latest">
 		<img alt="npm" src="https://img.shields.io/npm/v/use-custom-hooks?style=for-the-badge">
 	</a>
 	<a href= "https://www.npmjs.com/package/use-custom-hooks/">
