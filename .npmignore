@@ -7,5 +7,7 @@ src
 index.html
 package-lock.json
 package.json
-vite.confit.ts
+tsconfig.node.json
+tsconfig.json
+vite.config.ts
 .prettierrc
