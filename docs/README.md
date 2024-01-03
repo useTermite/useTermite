@@ -786,40 +786,49 @@ Custom hook to implement and interact with a linked list data structure in your 
 ### Usage
 
 ```jsx
-import React from 'react'
-import { useList } from 'use-termite'
+import { useKeyPress, useList } from 'use-termite'
+import { useEffect, useRef } from 'react'
 
-const ListComponent = () => {
-  const { insertAtEnd, removeFromEnd, find, traverse, size } = useList()
+const App = () => {
+  const { append, list, size, pop, clear, insertAfter, deleteItem, shift, prepend } = useList()
 
-  const handleInsert = () => {
-    const newItem = `Item ${size + 1}`
-    insertAtEnd(newItem)
-    console.log(`Inserted ${newItem}`)
-  }
+  const inpRef = useRef(null)
 
-  const handleRemove = () => {
-    const removedItem = removeFromEnd()
-    console.log(`Removed ${removedItem}`)
-  }
+  useKeyPress('Enter', () => {
+    if (inpRef && inpRef.current && inpRef.current.value) {
+      append(inpRef.current.value)
+    }
+  })
 
-  const handleFind = value => {
-    const item = find(value)
-    console.log(item ? `${value} found` : `${value} not found`)
-  }
+  useKeyPress('Escape', () => {
+    if (inpRef && inpRef.current && inpRef.current.value) {
+      pop()
+    }
+  })
+
+  useEffect(() => {
+    console.log(list)
+  }, [list])
 
   return (
     <div>
-      <button onClick={handleInsert}>Insert at End</button>
-      <button onClick={handleRemove} disabled={size === 0}>
-        Remove from End
-      </button>
-      <button onClick={() => handleFind('Item 1')}>Find 'Item 1'</button>
-      <p>List size: {size}</p>
-      <p>All items: {traverse().join(', ') || 'List is empty'}</p>
+      <input ref={inpRef} type='text' />
+      <h1>My list ({size}):</h1>
+      <button onClick={() => insertAfter(list[1], inpRef.current.value)}>inserAfter</button>
+      <button onClick={() => deleteItem(inpRef.current.value)}>deleteItem</button>
+      <button onClick={shift}>shift</button>
+      <button onClick={clear}>clear</button>
+      <button onClick={() => prepend(inpRef.current.value)}>prepend</button>
+      <ul>
+        {list.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </div>
   )
 }
+
+export default App
 ```
 
 In this example, `useList` is used to create and manipulate a linked list. You can insert items at the end, remove items from the end, find an item by value, and view all items in the list.
