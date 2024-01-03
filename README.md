@@ -6,10 +6,10 @@
   <a href= "https://www.npmjs.com/package/use-termite/v/latest">
 		<img alt="npm" src="https://img.shields.io/npm/v/use-custom-hooks?style=for-the-badge">
 	</a>
-	<a href= "https://www.npmjs.com/package/use-custom-hooks/">
+	<a href= "https://www.npmjs.com/package/use-termite/">
 		<img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/use-custom-hooks?style=for-the-badge">
 	</a>
-	<a href= "https://www.npmjs.com/package/use-custom-hooks/">
+	<a href= "https://www.npmjs.com/package/use-termite/">
 		<img alt="npm Downloads/Week" src="https://img.shields.io/npm/dw/use-custom-hooks?style=for-the-badge">
 	</a>
 	<a href="https://github.com/useTermite/useTermite/issues">
