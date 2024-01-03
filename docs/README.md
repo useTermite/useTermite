@@ -760,7 +760,7 @@ const StackComponent = () => {
 }
 ```
 
-In this example, `useStack` is used to manage a stack of values. The hook initializes the stack with initial values if provided. It offers functions to `push`, `pop`, `clear`, and `peek` at the stack, as well as utility functions to check if the stack is empty and to print the stack.
+</br>
 
 ### Parameters
 
@@ -861,9 +861,9 @@ None.
 
 </br>
 
-## 🚶 useQueue
+## 🗂 useQueue
 
-Custom hook to implement and interact with a queue data structure in your React components. A queue follows the First In, First Out (FIFO) principle. It provides functionalities to enqueue (add), dequeue (remove), peek (view the first element), and check the size of the queue.
+Custom hook that provides a convenient way to interact with a queue data structure within your React components. It leverages a `Queue` class to manage the queue operations and integrates with React's state management to ensure the component re-renders when the queue changes.
 
 ### Usage
 
@@ -872,47 +872,49 @@ import React from 'react'
 import { useQueue } from 'use-termite'
 
 const QueueComponent = () => {
-  const { enqueue, dequeue, peek, size, isEmpty } = useQueue()
+  const { queue, enqueue, dequeue, size } = useQueue(['first', 'second'])
 
   const handleEnqueue = () => {
-    const newItem = `Item ${size + 1}`
-    enqueue(newItem)
-    console.log(`Enqueued ${newItem}`)
+    enqueue('New Item')
   }
 
   const handleDequeue = () => {
-    const removedItem = dequeue()
-    console.log(`Dequeued ${removedItem}`)
+    dequeue()
   }
 
   return (
     <div>
       <button onClick={handleEnqueue}>Enqueue</button>
-      <button onClick={handleDequeue} disabled={isEmpty}>
+      <button onClick={handleDequeue} disabled={size === 0}>
         Dequeue
       </button>
-      <p>First item: {peek() || 'Queue is empty'}</p>
-      <p>Queue size: {size}</p>
+      <div>Queue size: {size}</div>
+      <ul>
+        {queue.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </div>
   )
 }
 ```
 
-In this example, `useQueue` is used to create and manipulate a queue. You can enqueue items to the end, dequeue items from the front, and view the first item and the size of the queue.
+In this example, `useQueue` is used to manage a queue of values. The hook initializes the queue with initial values if provided. It offers functions to `enqueue` (add an item to the end of the queue) and `dequeue` (remove an item from the front of the queue).
 
 ### Parameters
 
-None.
+1. `initialValue` (_any[]_): Initial array of items to populate the queue.
 
 ### Return value
 
-`{ enqueue, dequeue, peek, size, isEmpty }`
+An object containing:
 
-1. `enqueue` (_function_): Function to add an item to the end of the queue.
-2. `dequeue` (_function_): Function to remove and return the first item from the queue.
-3. `peek` (_function_): Function to return the first item of the queue without removing it.
-4. `size` (_number_): The current number of items in the queue.
-5. `isEmpty` (_boolean_): Boolean indicating whether the queue is empty.
+1. `queue` (_any[]_): The current state of the queue as an array.
+2. `enqueue` (_function_): Method to add an item to the end of the queue.
+3. `dequeue` (_function_): Method to remove an item from the front of the queue.
+4. `size` (_number_): The current size of the queue.
+
+### Notes
 
 </br>
 
