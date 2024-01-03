@@ -3,14 +3,14 @@
     <p>`useTermite` is a collection of powerful custom hooks designed to simplify and enhance your React.js projects. From managing network states and localash to handling complex data structures, `useTermite` provides a wide range of functionalities to cover your development needs.</p>
 	<br/>
 	<div align="center">
-  <a href= "https://www.npmjs.com/package/use-custom-hooks/v/latest">
-		<img alt="npm" src="https://img.shields.io/npm/v/use-custom-hooks?style=for-the-badge">
+  <a href= "https://www.npmjs.com/package/use-termite/v/latest">
+		<img alt="npm" src="https://img.shields.io/npm/v/use-termite?style=for-the-badge">
 	</a>
-	<a href= "https://www.npmjs.com/package/use-custom-hooks/">
-		<img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/use-custom-hooks?style=for-the-badge">
+	<a href= "https://www.npmjs.com/package/use-termite/">
+		<img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/use-termite?style=for-the-badge">
 	</a>
-	<a href= "https://www.npmjs.com/package/use-custom-hooks/">
-		<img alt="npm Downloads/Week" src="https://img.shields.io/npm/dw/use-custom-hooks?style=for-the-badge">
+	<a href= "https://www.npmjs.com/package/use-termite/">
+		<img alt="npm Downloads/Week" src="https://img.shields.io/npm/dw/use-termite?style=for-the-badge">
 	</a>
 	<a href="https://github.com/useTermite/useTermite/issues">
 		<img alt="GitHub issues" src="https://img.shields.io/github/issues/useTermite/useTermite?style=for-the-badge">
@@ -25,7 +25,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-<a href="https://github.com/useTermite/useTermite/graphs/contributors"><img src="https://img.shields.io/badge/all_contributors-6-orange.svg?style=for-the-badge" /></a>
+<a href="https://github.com/useTermite/useTermite/graphs/contributors"><img src="https://img.shields.io/badge/all_contributors-2-orange.svg?style=for-the-badge" /></a>
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 

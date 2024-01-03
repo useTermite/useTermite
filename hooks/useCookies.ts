@@ -8,7 +8,7 @@ interface CookieOptions {
 }
 
 // This hook provides methods to interact with browser cookies
-export const useCookies = () => {
+const useCookies = () => {
   // Get a cookie value by its name
   const getCookie = (name: string): string | undefined => {
     const matches = document.cookie.match(
@@ -45,3 +45,5 @@ export const useCookies = () => {
 
   return { getCookie, setCookie, deleteCookie }
 }
+
+export default useCookies
