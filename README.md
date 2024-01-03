@@ -1,6 +1,6 @@
 <div align="center">
     <h1>⚪ useTermite ⚪</h1>
-    <p>`useTermite` is a collection of 25 powerful custom hooks designed to simplify and enhance your React.js projects. From managing network states and localash to handling complex data structures, `useTermite` provides a wide range of functionalities to cover your development needs.</p>
+    <p>`useTermite` is a collection of powerful custom hooks designed to simplify and enhance your React.js projects. From managing network states and localash to handling complex data structures, `useTermite` provides a wide range of functionalities to cover your development needs.</p>
 	<br/>
 	<div align="center">
   <a href= "https://www.npmjs.com/package/use-custom-hooks/v/latest">
