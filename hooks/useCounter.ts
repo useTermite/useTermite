@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export const useCounter = (initialValue: number) => {
+const useCounter = (initialValue: number) => {
   const [amount, setAmount] = useState(initialValue) //The current count value
 
   const up = () => {
@@ -15,3 +15,5 @@ export const useCounter = (initialValue: number) => {
 
   return { up, down, amount }
 }
+
+export default useCounter
