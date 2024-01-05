@@ -52,7 +52,7 @@ npm i use-termite
 6. [useClickOutside](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-useclickoutside)
 7. [useCounter](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-usecounter)
 8. [useCookies](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-usecookies)
-9. [useHover](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-usehover)
+9. [useIsHovered](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-useIsHovered)
 10. [useMediaQuery](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-usemediaquery)
 11. [useIsClient](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-useisclient)
 12. [useTitle](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-usetitle)
@@ -65,7 +65,7 @@ npm i use-termite
 19. [useStack](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-usestack)
 20. [useList](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-uselist)
 21. [useQueue](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-usequeue)
-23. a little bit of creativity [useEventListener](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-useeventlistener)
+22. a little bit of creativity [useEventListener](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-useeventlistener)
 
 ## 📄 Documentation
 
