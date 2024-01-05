@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 // Custom hook for persisting state to localStorage.
 // It synchronizes the given state with a key in the browser's localStorage, allowing the state to persist through page refreshes.
 // T is a generic type parameter that represents the type of the value being stored.
-export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
+export function useLocalStorage<T = any>(key: string, initialValue: T | (() => T)) {
   // useState is initialized with a function that attempts to retrieve the existing value from localStorage
   // or initialize it with the provided initialValue if no value is found.
   const [value, setValue] = useState<T>(() => {
