@@ -10,11 +10,11 @@
 6. [useClickOutside](#-useclickoutside)
 7. [useCounter](#-usecounter)
 8. [useCookies](#-usecookies)
-9. [useHover](#-usehover)
+9. [useIsHovered](#-useIsHovered)
 10. [useMediaQuery](#-usemediaquery)
 11. [useIsClient](#-useisclient)
-12. [useTitle](#-usetitle)
-13. [useKeyPress](#-usekeypress)
+12. [useTitle](#%EF%B8%8F-usetitle)
+13. [useKeyPress](#%EF%B8%8F-usekeypress)
 14. [useRenderCount](#-userendercount)
 15. [useIsFirstRender](#-useisfirstrender)
 16. [useOrientation](#-useorientation)
@@ -23,8 +23,7 @@
 19. [useStack](#-usestack)
 20. [useList](#-uselist)
 21. [useQueue](#-usequeue)
-22. [useCountDown](#-usecountdown)
-23. a little bit of creativity [useEventListener](#-useeventlistener)
+22. a little bit of creativity [useEventListener](#-useeventlistener)
 
 </br>
 
@@ -67,52 +66,64 @@ None.
 
 </br>
 
-## 📋 useCopyPaste
+To create a document for the custom hook `useCopyPaste`, you'd want to follow the structured approach demonstrated in the previous examples, providing an overview, a usage example, parameter details, and an explanation of the return values and functionality. Here's how you might structure it:
 
-Custom hook to provide functionalities to copy text to the clipboard and paste from it. It returns an object containing two functions: `copy` for copying text to the clipboard and `paste` for retrieving text from the clipboard.
+---
+
+## 🔊 useCopyPaste
+
+Custom hook providing a simple interface for copying to and pasting from the system clipboard using the Clipboard API. It encapsulates the functionality into two main functions: `copy` for copying text to the clipboard and `paste` for retrieving text from the clipboard. This hook is useful for building features that require interaction with the clipboard in a web application.
 
 ### Usage
 
 ```jsx
 import React, { useState } from 'react'
-import { useCopyPaste } from 'use-termite'
+import { useCopyPaste } from 'use-your-hooks-package'
 
-const CopyPasteComponent = () => {
-  const { copy, paste } = useCopyPaste()
+const ClipboardComponent = () => {
   const [text, setText] = useState('')
-  const [clipboardContent, setClipboardContent] = useState('')
+  const { copy, paste } = useCopyPaste()
 
   const handleCopy = async () => {
-    await copy(text)
-    alert(`Copied: ${text}`)
+    await copy('Text to copy')
+    console.log('Text copied to clipboard!')
   }
 
   const handlePaste = async () => {
-    const text = await paste()
-    setClipboardContent(text)
+    const pastedText = await paste()
+    setText(pastedText)
+    console.log('Text pasted from clipboard:', pastedText)
   }
 
   return (
     <div>
-      <input type='text' value={text} onChange={e => setText(e.target.value)} placeholder='Type here to copy' />
       <button onClick={handleCopy}>Copy to Clipboard</button>
       <button onClick={handlePaste}>Paste from Clipboard</button>
-      <p>Pasted content: {clipboardContent}</p>
+      <p>Pasted Text: {text}</p>
     </div>
   )
 }
 ```
 
-### Parameters
+In this example, `useCopyPaste` is used to copy a string to the clipboard and paste from it. It provides buttons for both actions and displays the pasted text.
 
-None.
+### Interface: CopyPasteFunctions
+
+- **copy** (`(text: string) => Promise<void>`): Function to copy the provided text to the clipboard. It returns a promise that resolves once the copying is complete.
+- **paste** (`() => Promise<string>`): Function to retrieve text from the clipboard. It returns a promise that resolves with the pasted text.
 
 ### Return value
 
-`{copy, paste}`
+An object containing:
 
-1. `copy` (_function_): A function that takes a string as an argument and copies it to the clipboard.
-2. `paste` (_function_): A function that retrieves text from the clipboard and returns it.
+- **copy**: A function to copy text to the clipboard.
+- **paste**: A function to retrieve text from the clipboard.
+
+### How it works
+
+The hook defines two asynchronous functions: `copyToClipboard` and `pasteFromClipboard`. `copyToClipboard` uses the Clipboard API's `writeText` method to copy text, and `pasteFromClipboard` uses the `readText` method to paste text. Both functions handle errors and log them to the console. The hook returns an object containing these functions, providing a simple and clean interface for components that need to interact with the clipboard.
+
+By encapsulating the Clipboard API's complexity and providing a straightforward interface, `useCopyPaste` makes it easy to add clipboard functionality to your components with minimal boilerplate.
 
 </br>
 
@@ -142,6 +153,21 @@ const ThemeToggler = () => {
 
 This component uses Tailwind CSS classes to demonstrate how you might apply the dark mode in your application. The `dark` class is conditionally applied to the top-level `div` based on the current mode. Tailwind CSS will handle the rest, applying the appropriate styles when the `dark` class is present.
 
+### Tailwind CSS Configuration
+
+To ensure that your application supports dark mode with Tailwind CSS, you need to configure your `tailwind.config.js` file properly. Here's how you can set it up:
+
+```js
+// tailwind.config.js
+module.exports = {
+  // ...
+  darkMode: 'class' // or 'media' if you want to automatically switch based on user's system preferences
+  // ...
+}
+```
+
+Setting `darkMode` to `'class'` tells Tailwind to apply dark mode styles when the `.dark` class is present on the `html` or any parent element. This works perfectly with the `useDarkMode` hook, as it toggles this class based on the user's selection.
+
 ### Parameters
 
 None.
@@ -153,6 +179,13 @@ None.
 1. `mode` (_string_): The current theme mode ('dark' or 'light').
 2. `toggle` (_function_): A function to toggle between dark and light modes.
 
+### Additional Tips
+
+- Ensure your Tailwind CSS version supports dark mode (v1.9.0+).
+- Use the `dark:` variant in your Tailwind classes to specify styles for dark mode, e.g., `dark:bg-black`.
+- Test the dark mode implementation across different browsers and devices to ensure consistency.
+
+By setting up your `tailwind.config.js` appropriately and utilizing this hook, you can create a user-friendly dark mode experience in your React applications with Tailwind CSS.
 </br>
 
 ## 💾 useLocalStorage
@@ -200,6 +233,60 @@ In this example, `useLocalStorage` is used to keep track of a 'username'. The ho
 
 1. `value` (_any_): The current state value retrieved from localStorage or the initial value.
 2. `setValue` (_function_): Function to update the state value and simultaneously update the corresponding localStorage item.
+
+</br>
+
+To create a document for the custom hook `useFetch`, follow a similar structure as the previous examples, providing an overview, usage example, parameter details, and an explanation of the return values and functionality. Here's how you might structure it:
+
+---
+
+## 🔊 useFetch
+
+Custom hook for making HTTP requests using the Fetch API. It's designed to fetch data from a given URL and handle the loading and error states automatically. The hook provides the fetched data, error information, loading state, and a function to refresh the data on demand.
+
+### Usage
+
+```jsx
+import React from 'react'
+import { useFetch } from 'use-your-hooks-package'
+
+const FetchComponent = () => {
+  const { data, isError, error, loading, refresh } = useFetch('https://api.example.com/data', true)
+
+  if (loading) return <div>Loading...</div>
+  if (isError) return <div>Error: {error}</div>
+
+  return (
+    <div>
+      <button onClick={refresh}>Refresh Data</button>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  )
+}
+```
+
+In this example, `useFetch` is used to retrieve data from 'https://api.example.com/data'. It displays the data in a formatted manner and provides a button to refresh the data. It also handles the loading and error states, displaying appropriate messages.
+
+### Parameters
+
+1. `url` (_String_): The URL for the HTTP request.
+2. `enabled` (_Boolean_): Flag indicating whether the request should be executed immediately.
+
+### Return value
+
+An object containing:
+
+- **data** (_T | null_): The data fetched from the server. It's initially null and gets updated once the data is fetched successfully.
+- **isError** (_Boolean_): A flag indicating whether an error occurred during the fetch.
+- **error** (_String | null_): A string containing the error message if an error occurred.
+- **loading** (_Boolean_): A flag indicating whether the request is in progress.
+- **refresh** (_Function_): A function that can be called to re-fetch the data.
+
+### How it works
+
+The hook initializes state for data, error, and loading status. It defines a `fetchData` function that makes the HTTP request using the Fetch API. This function handles loading states, success and error outcomes, and data updating. The `useEffect` hook is used to call `fetchData` whenever the `url` or `enabled` flag changes. This setup allows the hook to automatically fetch data when the component mounts or the URL changes, and it provides a way to manually refresh the data through the returned `refresh` function.
+
+By encapsulating the fetch logic and state management, `useFetch` provides a convenient way to fetch and display data with minimal boilerplate in your components.
 
 </br>
 
@@ -297,49 +384,44 @@ In this example, `useCounter` is used to keep track of a count value. The counte
 
 </br>
 
-## 🖱️ useHover
+To create a document for the custom hook `useIsHovered`, you would follow a similar structure as the `useEventListener` example provided. Here's how you might structure it:
 
-Custom hook to determine if the mouse is hovering over a specified element. It triggers a callback with the hover state (true for hover, false for not hovered).
+---
+
+## 🔊 useIsHovered
+
+Custom hook to determine if the mouse is hovering over a specified element. It accepts a ref to the element and a callback function that receives the hover state. This hook is useful for UI interactions that depend on the hover state of an element, such as changing styles or displaying tooltips.
 
 ### Usage
 
 ```jsx
-import React, { useRef, useState } from 'react'
-import { useHover } from 'use-termite'
+import React, { useRef } from 'react'
+import { useIsHovered } from 'use-your-hooks-package'
 
 const HoverComponent = () => {
-  const hoverRef = useRef(null)
-  const [isHovered, setIsHovered] = useState(false)
-
-  useHover(hoverRef, hovering => {
-    setIsHovered(hovering)
+  const divRef = useRef(null)
+  const isHovered = useIsHovered(divRef, hoverState => {
+    console.log(`Is hovered: ${hoverState}`)
   })
 
   return (
-    <div
-      ref={hoverRef}
-      style={{
-        width: 200,
-        height: 200,
-        backgroundColor: isHovered ? 'skyblue' : 'gray'
-      }}
-    >
-      {isHovered ? '😁 Hovering' : '😐 Not Hovering'}
+    <div ref={divRef} style={{ width: '200px', height: '200px', background: isHovered ? 'blue' : 'red' }}>
+      Hover over me!
     </div>
   )
 }
 ```
 
-In this example, `useHover` is used to track the hover state of a `div` element. When the element is hovered, it changes its background color and displays a different message.
+In this example, `useIsHovered` is used to determine if the `div` element is being hovered over. The background color of the `div` changes based on the hover state, and the hover state is logged to the console.
 
 ### Parameters
 
-1. `ref` (_React.RefObject_): A ref object pointing to the element to detect hovers for.
-2. `onHoverChange` (_function_): A callback function that receives the hover state.
+1. `ref` (_React.RefObject<HTMLElement>_): A ref object pointing to the DOM element to detect hovers for.
+2. `onHoverChange` (_function_): A callback function that receives the hover state (true or false).
 
 ### Return value
 
-None. The hook calls the `onHoverChange` callback with the current hover state.
+- **Boolean**: A boolean value indicating whether the element is currently being hovered.
 
 </br>
 
@@ -724,9 +806,9 @@ None.
 
 </br>
 
-## 🗃️ useStack
+## 💾 useStack
 
-Custom hook to implement and interact with a stack data structure in your React components. It provides the functionality to push, pop, peek, and check the size of the stack.
+Custom hook that provides a convenient way to interact with a stack data structure within your React components. It offers a variety of methods to manipulate the stack, similar to a standard stack implementation but with React state management integrated. This ensures your component re-renders when the stack changes.
 
 ### Usage
 
@@ -735,49 +817,57 @@ import React from 'react'
 import { useStack } from 'use-termite'
 
 const StackComponent = () => {
-  const { push, pop, peek, size, isEmpty } = useStack()
+  const { stack, push, pop, clear, isEmpty, peek, printStack, size } = useStack(['initial', 'values'])
 
   const handlePush = () => {
-    const newItem = `Item ${size + 1}`
-    push(newItem)
-    console.log(`Pushed ${newItem}`)
+    push('New Item')
   }
 
   const handlePop = () => {
-    const poppedItem = pop()
-    console.log(`Popped ${poppedItem}`)
+    pop()
   }
 
   return (
     <div>
       <button onClick={handlePush}>Push</button>
-      <button onClick={handlePop} disabled={isEmpty}>
+      <button onClick={handlePop} disabled={isEmpty()}>
         Pop
       </button>
-      <p>Top item: {peek() || 'Stack is empty'}</p>
-      <p>Stack size: {size}</p>
+      <button onClick={clear}>Clear</button>
+      <div>Top of stack: {peek()}</div>
+      <div>Stack size: {size}</div>
+      <div>Full stack: {printStack()}</div>
     </div>
   )
 }
 ```
 
-In this example, `useStack` is used to create a simple stack structure. You can push new items to the stack, pop the top item off the stack, and view the current top item and the size of the stack.
+</br>
 
 ### Parameters
 
-None.
+1. `initialValue` (_any[]_): Initial array of items to populate the stack.
 
 ### Return value
 
-`{ push, pop, peek, size, isEmpty }`
+An object containing:
 
-1. `push` (_function_): Function to add an item to the top of the stack.
-2. `pop` (_function_): Function to remove and return the top item from the stack.
-3. `peek` (_function_): Function to return the top item of the stack without removing it.
-4. `size` (_number_): The current number of items in the stack.
-5. `isEmpty` (_boolean_): Boolean indicating whether the stack is empty.
+1. `stack` (_any[]_): The current state of the stack.
+2. `push` (_function_): Method to push an item onto the stack.
+3. `pop` (_function_): Method to pop an item off the stack.
+4. `clear` (_function_): Method to clear the stack.
+5. `isEmpty` (_function_): Method to check if the stack is empty.
+6. `peek` (_function_): Method to peek at the top item of the stack without removing it.
+7. `printStack` (_function_): Method to return a string representation of the stack.
+8. `size` (_number_): The current size of the stack.
 
 </br>
+
+### Notes
+
+- `useStack` utilizes the custom `Stack` class from the provided 'lib/stack' to manage stack operations. This class should implement standard stack methods (`push`, `pop`, `peek`, `isEmpty`, `clear`) and maintain its own internal items array.
+- The hook uses React's `useState` and `useEffect` to manage and re-render the stack state within your component.
+- It's optimized to prevent unnecessary re-renders and only updates the component when stack operations are performed.
 
 ## 🔗 useList
 
@@ -853,9 +943,9 @@ None.
 
 </br>
 
-## 🚶 useQueue
+## 🗂 useQueue
 
-Custom hook to implement and interact with a queue data structure in your React components. A queue follows the First In, First Out (FIFO) principle. It provides functionalities to enqueue (add), dequeue (remove), peek (view the first element), and check the size of the queue.
+Custom hook that provides a convenient way to interact with a queue data structure within your React components. It leverages a `Queue` class to manage the queue operations and integrates with React's state management to ensure the component re-renders when the queue changes.
 
 ### Usage
 
@@ -864,47 +954,49 @@ import React from 'react'
 import { useQueue } from 'use-termite'
 
 const QueueComponent = () => {
-  const { enqueue, dequeue, peek, size, isEmpty } = useQueue()
+  const { queue, enqueue, dequeue, size } = useQueue(['first', 'second'])
 
   const handleEnqueue = () => {
-    const newItem = `Item ${size + 1}`
-    enqueue(newItem)
-    console.log(`Enqueued ${newItem}`)
+    enqueue('New Item')
   }
 
   const handleDequeue = () => {
-    const removedItem = dequeue()
-    console.log(`Dequeued ${removedItem}`)
+    dequeue()
   }
 
   return (
     <div>
       <button onClick={handleEnqueue}>Enqueue</button>
-      <button onClick={handleDequeue} disabled={isEmpty}>
+      <button onClick={handleDequeue} disabled={size === 0}>
         Dequeue
       </button>
-      <p>First item: {peek() || 'Queue is empty'}</p>
-      <p>Queue size: {size}</p>
+      <div>Queue size: {size}</div>
+      <ul>
+        {queue.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </div>
   )
 }
 ```
 
-In this example, `useQueue` is used to create and manipulate a queue. You can enqueue items to the end, dequeue items from the front, and view the first item and the size of the queue.
+In this example, `useQueue` is used to manage a queue of values. The hook initializes the queue with initial values if provided. It offers functions to `enqueue` (add an item to the end of the queue) and `dequeue` (remove an item from the front of the queue).
 
 ### Parameters
 
-None.
+1. `initialValue` (_any[]_): Initial array of items to populate the queue.
 
 ### Return value
 
-`{ enqueue, dequeue, peek, size, isEmpty }`
+An object containing:
 
-1. `enqueue` (_function_): Function to add an item to the end of the queue.
-2. `dequeue` (_function_): Function to remove and return the first item from the queue.
-3. `peek` (_function_): Function to return the first item of the queue without removing it.
-4. `size` (_number_): The current number of items in the queue.
-5. `isEmpty` (_boolean_): Boolean indicating whether the queue is empty.
+1. `queue` (_any[]_): The current state of the queue as an array.
+2. `enqueue` (_function_): Method to add an item to the end of the queue.
+3. `dequeue` (_function_): Method to remove an item from the front of the queue.
+4. `size` (_number_): The current size of the queue.
+
+### Notes
 
 </br>
 
