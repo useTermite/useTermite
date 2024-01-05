@@ -26,8 +26,10 @@ export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
 
   // useEffect is used to update the localStorage item whenever the key or the value changes.
   useEffect(() => {
-    // When the value or key changes, update the corresponding item in localStorage with the new value.
-    localStorage.setItem(key, JSON.stringify(value))
+    if (typeof window !== 'undefined' && window.localStorage) {
+      // When the value or key changes, update the corresponding item in localStorage with the new value.
+      localStorage.setItem(key, JSON.stringify(value))
+    }
   }, [key, value])
 
   // Return the current value and the function to update it, allowing the user of the hook to read and update the localStorage-backed state.
