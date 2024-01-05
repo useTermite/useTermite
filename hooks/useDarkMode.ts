@@ -1,39 +1,82 @@
 import { useEffect, useState } from 'react'
 
-// Define the structure of the returned object from the hook.
+// Define the possible modes as 'dark' or 'light'.
+type Mode = 'dark' | 'light'
+
+// Define the structure of the object returned by the useDarkMode hook.
 interface DarkModeHook {
-  mode: string // Represents the current mode ('light' or 'dark').
-  toggle: () => void // Function to toggle between light and dark modes.
+  mode: Mode // The current theme mode.
+  toggle: () => void // Function to toggle the theme mode.
 }
 
-// Custom hook for managing dark and light modes.
+/**
+ * Get the initial theme mode from system preferences or local storage,
+ * defaults to 'light' if none is found.
+ * @returns {Mode} - The initial theme mode.
+ */
+const getInitialMode = (): Mode => {
+  // Check for system preference for dark mode.
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  // Retrieve the theme from local storage if available.
+  const storedTheme = localStorage.getItem('theme')
+  if (storedTheme) {
+    return storedTheme as Mode
+  } else {
+    return prefersDark ? 'dark' : 'light' // Default to system preference or 'light'.
+  }
+}
+
+/**
+ * Custom hook for managing and persisting a theme mode across the application.
+ * @returns {DarkModeHook} - The current mode and a function to toggle the mode.
+ */
 const useDarkMode = (): DarkModeHook => {
-  // Function to get the initial mode from local storage or default to 'light'.
-  const getInitialMode = (): string => {
-    if (typeof window !== 'undefined') {
-      const savedMode = localStorage.getItem('darkMode')
-      return savedMode ? JSON.parse(savedMode) : 'light'
-    }
-    return 'light'
-  }
-
   // State to keep track of the current mode.
-  const [mode, setMode] = useState<string>(getInitialMode)
+  const [mode, setMode] = useState<Mode>('light')
 
-  // Function to toggle between light and dark modes.
-  const toggle = (): void => {
-    const newMode = mode === 'light' ? 'dark' : 'light'
-    setMode(newMode)
-    localStorage.setItem('darkMode', JSON.stringify(newMode))
-  }
-
-  // Effect to update the HTML element's classList based on the current mode.
+  // Effect to initialize the mode.
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      document.documentElement.classList.remove('dark', 'light')
-      document.documentElement.classList.add(mode)
+    // Get the initial mode only once when the component mounts.
+    const initialMode = typeof window !== 'undefined' ? getInitialMode() : 'light'
+    setMode(initialMode)
+  }, [])
+
+  // Effect to update the HTML element and local storage whenever the mode changes.
+  useEffect(() => {
+    /**
+     * Update the mode in local storage and the document's class list.
+     * @param {Mode} newMode - The new mode to be set.
+     */
+    const updateMode = (newMode: Mode) => {
+      const classList = document.documentElement.classList
+      // Update the class list on the HTML element.
+      newMode === 'dark' ? classList.add('dark') : classList.remove('dark')
+      // Persist the new mode in local storage.
+      localStorage.setItem('theme', newMode)
+    }
+
+    // Apply the mode update.
+    updateMode(mode)
+
+    // Synchronize mode across tabs.
+    const handleStorageChange = () => {
+      const newMode = (localStorage.getItem('theme') as Mode) || 'light'
+      setMode(newMode)
+    }
+
+    // Listen for changes in local storage to synchronize tabs.
+    window.addEventListener('storage', handleStorageChange)
+
+    // Cleanup listener on component unmount.
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
     }
   }, [mode])
+
+  // Function to toggle between 'light' and 'dark' modes.
+  const toggle = (): void => {
+    setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'))
+  }
 
   // Return the current mode and the toggle function.
   return { mode, toggle }

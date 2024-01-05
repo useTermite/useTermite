@@ -154,6 +154,21 @@ const ThemeToggler = () => {
 
 This component uses Tailwind CSS classes to demonstrate how you might apply the dark mode in your application. The `dark` class is conditionally applied to the top-level `div` based on the current mode. Tailwind CSS will handle the rest, applying the appropriate styles when the `dark` class is present.
 
+### Tailwind CSS Configuration
+
+To ensure that your application supports dark mode with Tailwind CSS, you need to configure your `tailwind.config.js` file properly. Here's how you can set it up:
+
+```js
+// tailwind.config.js
+module.exports = {
+  // ...
+  darkMode: 'class' // or 'media' if you want to automatically switch based on user's system preferences
+  // ...
+}
+```
+
+Setting `darkMode` to `'class'` tells Tailwind to apply dark mode styles when the `.dark` class is present on the `html` or any parent element. This works perfectly with the `useDarkMode` hook, as it toggles this class based on the user's selection.
+
 ### Parameters
 
 None.
@@ -165,6 +180,13 @@ None.
 1. `mode` (_string_): The current theme mode ('dark' or 'light').
 2. `toggle` (_function_): A function to toggle between dark and light modes.
 
+### Additional Tips
+
+- Ensure your Tailwind CSS version supports dark mode (v1.9.0+).
+- Use the `dark:` variant in your Tailwind classes to specify styles for dark mode, e.g., `dark:bg-black`.
+- Test the dark mode implementation across different browsers and devices to ensure consistency.
+
+By setting up your `tailwind.config.js` appropriately and utilizing this hook, you can create a user-friendly dark mode experience in your React applications with Tailwind CSS.
 </br>
 
 ## 💾 useLocalStorage
