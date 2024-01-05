@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
  * @param enabled - Flag indicating whether the request should be executed.
  * @returns An object containing the fetched data, error state, loading state, and a refresh function.
  */
-const useFetch = <T = any>(url: string, enabled: boolean) => {
+const useFetch = <T = any>(url: string, enabled: boolean = true) => {
   // State to store the fetched data.
   const [data, setData] = useState<T | null>(null)
 
