@@ -1,5 +1,9 @@
+import { useEffect } from 'react'
+
 const useTitle = (title: string) => {
-  document.title = title //Changes the title of the current page documant
+  useEffect(() => {
+    document.title = title //Changes the title of the current page documant
+  }, [title])
 }
 
 export default useTitle
