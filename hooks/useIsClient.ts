@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export const useIsClient = () => {
+const useIsClient = () => {
   const [isClient, setIsClient] = useState<boolean>(false) //A boolean value indicating whether the code is running in a client environment where the window object is available.
 
   useEffect(() => {
@@ -11,3 +11,5 @@ export const useIsClient = () => {
 
   return isClient
 }
+
+export default useIsClient
