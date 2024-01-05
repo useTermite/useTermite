@@ -203,6 +203,60 @@ In this example, `useLocalStorage` is used to keep track of a 'username'. The ho
 
 </br>
 
+To create a document for the custom hook `useFetch`, follow a similar structure as the previous examples, providing an overview, usage example, parameter details, and an explanation of the return values and functionality. Here's how you might structure it:
+
+---
+
+## 🔊 useFetch
+
+Custom hook for making HTTP requests using the Fetch API. It's designed to fetch data from a given URL and handle the loading and error states automatically. The hook provides the fetched data, error information, loading state, and a function to refresh the data on demand.
+
+### Usage
+
+```jsx
+import React from 'react'
+import { useFetch } from 'use-your-hooks-package'
+
+const FetchComponent = () => {
+  const { data, isError, error, loading, refresh } = useFetch('https://api.example.com/data', true)
+
+  if (loading) return <div>Loading...</div>
+  if (isError) return <div>Error: {error}</div>
+
+  return (
+    <div>
+      <button onClick={refresh}>Refresh Data</button>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  )
+}
+```
+
+In this example, `useFetch` is used to retrieve data from 'https://api.example.com/data'. It displays the data in a formatted manner and provides a button to refresh the data. It also handles the loading and error states, displaying appropriate messages.
+
+### Parameters
+
+1. `url` (_String_): The URL for the HTTP request.
+2. `enabled` (_Boolean_): Flag indicating whether the request should be executed immediately.
+
+### Return value
+
+An object containing:
+
+- **data** (_T | null_): The data fetched from the server. It's initially null and gets updated once the data is fetched successfully.
+- **isError** (_Boolean_): A flag indicating whether an error occurred during the fetch.
+- **error** (_String | null_): A string containing the error message if an error occurred.
+- **loading** (_Boolean_): A flag indicating whether the request is in progress.
+- **refresh** (_Function_): A function that can be called to re-fetch the data.
+
+### How it works
+
+The hook initializes state for data, error, and loading status. It defines a `fetchData` function that makes the HTTP request using the Fetch API. This function handles loading states, success and error outcomes, and data updating. The `useEffect` hook is used to call `fetchData` whenever the `url` or `enabled` flag changes. This setup allows the hook to automatically fetch data when the component mounts or the URL changes, and it provides a way to manually refresh the data through the returned `refresh` function.
+
+By encapsulating the fetch logic and state management, `useFetch` provides a convenient way to fetch and display data with minimal boilerplate in your components.
+
+</br>
+
 ## 🔲 useClickOutside
 
 Custom hook to detect clicks outside a specified DOM element. It's useful for handling scenarios like closing a modal or dropdown menu when the user clicks outside of it.
