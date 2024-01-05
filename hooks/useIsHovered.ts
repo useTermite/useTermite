@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
  * @param onHoverChange - A callback function that receives the hover state.
  * @returns A boolean indicating whether the element is currently being hovered.
  */
-const useHover = (ref: React.RefObject<HTMLElement>, onHoverChange: (isHovered: boolean) => void) => {
+const useIsHovered = (ref: React.RefObject<HTMLElement>, onHoverChange: (isHovered: boolean) => void) => {
   // State to track whether the element is currently being hovered.
   const [isHovered, setIsHovered] = useState(false)
 
@@ -45,4 +45,4 @@ const useHover = (ref: React.RefObject<HTMLElement>, onHoverChange: (isHovered: 
   return isHovered
 }
 
-export default useHover
+export default useIsHovered

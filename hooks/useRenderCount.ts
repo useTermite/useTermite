@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 
 // Custom hook to count and log the number of component re-renders.
-const useRenderCount = (componentName: string) => {
+const useRenderCount = (componentName: string = 'this (unnamed) component') => {
   // Ref to store the previous render count.
   const renderCountRef = useRef<number>(0)
 
@@ -12,7 +12,7 @@ const useRenderCount = (componentName: string) => {
 
     // Log the current render count and component name to the console.
     console.log(`${componentName} has been re-rendered ${renderCountRef.current} times.`)
-  })
+  }, [])
 
   // Return the current render count.
   return renderCountRef.current
