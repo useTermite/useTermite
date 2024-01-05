@@ -10,7 +10,7 @@
 6. [useClickOutside](#-useclickoutside)
 7. [useCounter](#-usecounter)
 8. [useCookies](#-usecookies)
-9. [useHover](#-usehover)
+9. [useIsHovered](#-useIsHovered)
 10. [useMediaQuery](#-usemediaquery)
 11. [useIsClient](#-useisclient)
 12. [useTitle](#-usetitle)
@@ -297,49 +297,44 @@ In this example, `useCounter` is used to keep track of a count value. The counte
 
 </br>
 
-## 🖱️ useHover
+To create a document for the custom hook `useIsHovered`, you would follow a similar structure as the `useEventListener` example provided. Here's how you might structure it:
 
-Custom hook to determine if the mouse is hovering over a specified element. It triggers a callback with the hover state (true for hover, false for not hovered).
+---
+
+## 🔊 useIsHovered
+
+Custom hook to determine if the mouse is hovering over a specified element. It accepts a ref to the element and a callback function that receives the hover state. This hook is useful for UI interactions that depend on the hover state of an element, such as changing styles or displaying tooltips.
 
 ### Usage
 
 ```jsx
-import React, { useRef, useState } from 'react'
-import { useHover } from 'use-termite'
+import React, { useRef } from 'react'
+import { useIsHovered } from 'use-your-hooks-package'
 
 const HoverComponent = () => {
-  const hoverRef = useRef(null)
-  const [isHovered, setIsHovered] = useState(false)
-
-  useHover(hoverRef, hovering => {
-    setIsHovered(hovering)
+  const divRef = useRef(null)
+  const isHovered = useIsHovered(divRef, hoverState => {
+    console.log(`Is hovered: ${hoverState}`)
   })
 
   return (
-    <div
-      ref={hoverRef}
-      style={{
-        width: 200,
-        height: 200,
-        backgroundColor: isHovered ? 'skyblue' : 'gray'
-      }}
-    >
-      {isHovered ? '😁 Hovering' : '😐 Not Hovering'}
+    <div ref={divRef} style={{ width: '200px', height: '200px', background: isHovered ? 'blue' : 'red' }}>
+      Hover over me!
     </div>
   )
 }
 ```
 
-In this example, `useHover` is used to track the hover state of a `div` element. When the element is hovered, it changes its background color and displays a different message.
+In this example, `useIsHovered` is used to determine if the `div` element is being hovered over. The background color of the `div` changes based on the hover state, and the hover state is logged to the console.
 
 ### Parameters
 
-1. `ref` (_React.RefObject_): A ref object pointing to the element to detect hovers for.
-2. `onHoverChange` (_function_): A callback function that receives the hover state.
+1. `ref` (_React.RefObject<HTMLElement>_): A ref object pointing to the DOM element to detect hovers for.
+2. `onHoverChange` (_function_): A callback function that receives the hover state (true or false).
 
 ### Return value
 
-None. The hook calls the `onHoverChange` callback with the current hover state.
+- **Boolean**: A boolean value indicating whether the element is currently being hovered.
 
 </br>
 
