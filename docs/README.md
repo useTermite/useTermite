@@ -67,52 +67,64 @@ None.
 
 </br>
 
-## 📋 useCopyPaste
+To create a document for the custom hook `useCopyPaste`, you'd want to follow the structured approach demonstrated in the previous examples, providing an overview, a usage example, parameter details, and an explanation of the return values and functionality. Here's how you might structure it:
 
-Custom hook to provide functionalities to copy text to the clipboard and paste from it. It returns an object containing two functions: `copy` for copying text to the clipboard and `paste` for retrieving text from the clipboard.
+---
+
+## 🔊 useCopyPaste
+
+Custom hook providing a simple interface for copying to and pasting from the system clipboard using the Clipboard API. It encapsulates the functionality into two main functions: `copy` for copying text to the clipboard and `paste` for retrieving text from the clipboard. This hook is useful for building features that require interaction with the clipboard in a web application.
 
 ### Usage
 
 ```jsx
 import React, { useState } from 'react'
-import { useCopyPaste } from 'use-termite'
+import { useCopyPaste } from 'use-your-hooks-package'
 
-const CopyPasteComponent = () => {
-  const { copy, paste } = useCopyPaste()
+const ClipboardComponent = () => {
   const [text, setText] = useState('')
-  const [clipboardContent, setClipboardContent] = useState('')
+  const { copy, paste } = useCopyPaste()
 
   const handleCopy = async () => {
-    await copy(text)
-    alert(`Copied: ${text}`)
+    await copy('Text to copy')
+    console.log('Text copied to clipboard!')
   }
 
   const handlePaste = async () => {
-    const text = await paste()
-    setClipboardContent(text)
+    const pastedText = await paste()
+    setText(pastedText)
+    console.log('Text pasted from clipboard:', pastedText)
   }
 
   return (
     <div>
-      <input type='text' value={text} onChange={e => setText(e.target.value)} placeholder='Type here to copy' />
       <button onClick={handleCopy}>Copy to Clipboard</button>
       <button onClick={handlePaste}>Paste from Clipboard</button>
-      <p>Pasted content: {clipboardContent}</p>
+      <p>Pasted Text: {text}</p>
     </div>
   )
 }
 ```
 
-### Parameters
+In this example, `useCopyPaste` is used to copy a string to the clipboard and paste from it. It provides buttons for both actions and displays the pasted text.
 
-None.
+### Interface: CopyPasteFunctions
+
+- **copy** (`(text: string) => Promise<void>`): Function to copy the provided text to the clipboard. It returns a promise that resolves once the copying is complete.
+- **paste** (`() => Promise<string>`): Function to retrieve text from the clipboard. It returns a promise that resolves with the pasted text.
 
 ### Return value
 
-`{copy, paste}`
+An object containing:
 
-1. `copy` (_function_): A function that takes a string as an argument and copies it to the clipboard.
-2. `paste` (_function_): A function that retrieves text from the clipboard and returns it.
+- **copy**: A function to copy text to the clipboard.
+- **paste**: A function to retrieve text from the clipboard.
+
+### How it works
+
+The hook defines two asynchronous functions: `copyToClipboard` and `pasteFromClipboard`. `copyToClipboard` uses the Clipboard API's `writeText` method to copy text, and `pasteFromClipboard` uses the `readText` method to paste text. Both functions handle errors and log them to the console. The hook returns an object containing these functions, providing a simple and clean interface for components that need to interact with the clipboard.
+
+By encapsulating the Clipboard API's complexity and providing a straightforward interface, `useCopyPaste` makes it easy to add clipboard functionality to your components with minimal boilerplate.
 
 </br>
 
