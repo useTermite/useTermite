@@ -56,5 +56,8 @@
   "bugs": {
     "url": "https://github.com/useTermite/useTermite/issues"
   },
-  "homepage": "https://github.com/useTermite/useTermite#readme"
+  "homepage": "https://github.com/useTermite/useTermite#readme",
+  "dependencies": {
+    "yarn": "^1.22.21"
+  }
 }
