@@ -65,7 +65,8 @@ npm i use-termite
 19. [useStack](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-usestack)
 20. [useList](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-uselist)
 21. [useQueue](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-usequeue)
-22. a little bit of creativity [useEventListener](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-useeventlistener)
+22. [useForceUpdate](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-useforceupdate)
+23. a little bit of creativity [useEventListener](https://github.com/useTermite/useTermite/blob/main/docs/README.md#-useeventlistener)
 
 ## 📄 Documentation
 

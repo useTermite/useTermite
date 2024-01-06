@@ -23,7 +23,8 @@
 19. [useStack](#-usestack)
 20. [useList](#-uselist)
 21. [useQueue](#-usequeue)
-22. a little bit of creativity [useEventListener](#-useeventlistener)
+22. [useForceUpdate](#-useforceupdate)
+23. a little bit of creativity [useEventListener](#-useeventlistener)
 
 </br>
 
@@ -1047,6 +1048,53 @@ In this example, `useCountDown` is used to create a countdown timer. You can sta
 6. `reset` (_function_): Function to reset the countdown to the initial time.
 
 </br>
+
+## 💪 useForceUpdate
+
+A Custom hook to force a re-render whenever necessary - useful when working with deeply nested objects or arrays
+
+### Usage
+
+```jsx
+import React from 'react';
+import useForceUpdate from 'use-termite';
+
+const Sample = () => {
+  const [forceUpdate, state] = useForceUpdate();
+  // * call the forceUpdate function whenever a forced re-render
+  // * is necessary
+
+  const clickHandler = () => {
+    // component's logic goes Here
+    forceUpdate();
+  };
+
+  // to indicate that a render occurred
+  console.log('render');
+
+  return (
+    <div>
+      <button type='button' onClick={clickHandler}>
+        re-render
+      </button>
+    </div>
+  );
+};
+```
+
+### Parameters
+
+None.
+
+### Return value
+
+`[forceUpdate, state]`
+
+1. `forceUpdate` (_Function_) : a function to force a re-render
+2. `state` (_Boolean_) : the related state updating which forces the re-render
+
+</br>
+---
 
 ## 🔊 useEventListener
 
