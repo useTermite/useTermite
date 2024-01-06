@@ -20,3 +20,4 @@ export { default as useQueue } from './hooks/useQueue';
 export { default as useRenderCount } from './hooks/useRenderCount';
 export { default as useStack } from './hooks/useStack';
 export { default as useTitle } from './hooks/useTitle';
+export { default as useForceUpdate } from './hooks/useForceUpdate';
