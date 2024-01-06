@@ -15,7 +15,45 @@ If you are contributing a custom hook, please explain the working or include an 
    Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
 4. Your pull request will be merged after getting approval from the owner/collaborators of the repo.
 
-## Code of Conduct
+## Naming Conventions
+
+### - file name:
+
+they should be started with `use` keyword as you might know for React custom hooks. for example: `useTermite.ts` with _camelCase_.
+
+### - custom hook function name:
+
+- as file names, they should be started with `use` keyword
+- with _camelCase_
+- and also you must use _Arrow functions_
+- **with _parameter_ and _return_ type clearly specified**.
+
+example:
+
+```tsx
+const useTermite = (param: ParamType): void => {};
+```
+
+### - helper function name:
+
+> naming should be like this: `clickHandler`
+
+- first: what kind of functionality it has or what it does.
+- second: the `Hanlder` key word.
+- it should be completely static typed (parameters and return type)
+- and also you should use camel case in name.
+
+example:
+
+```tsx
+const getInputHanlder = (e: ChangeEvent<HTMLInputElement>): string => {
+  return e.target.value;
+};
+```
+
+</br>
+
+# Code of Conduct
 
 ### Our Pledge
 
