@@ -85,7 +85,7 @@ Basic steps:
 2. Work on the issue after you get assigned.
 3. Fork this repo.
 4. Install the dependencies using `npm install`.
-5. Make the changes. and commit your branch.
+5. Make the changes, commmit them on your branch and push them.
 6. [Open PR](https://github.com/usetermite/usetermite/compare) when the feature/fix is ready.
 7. The collaborators will review your PR and if approved will merge to the master.
 
