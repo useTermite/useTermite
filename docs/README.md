@@ -34,11 +34,11 @@ Custom hook to track the network state of the user's device, providing informati
 ### Usage
 
 ```jsx
-import React from 'react'
-import useNetworkState from 'use-termite'
+import React from 'react';
+import useNetworkState from 'use-termite';
 
 const NetworkStatus = () => {
-  const { isOnline, state } = useNetworkState()
+  const { isOnline, state } = useNetworkState();
   /*
     If the user is connected to the internet, isOnline will be true and state will be 'online'.
     Otherwise, isOnline will be false and state will be 'offline'.
@@ -49,8 +49,8 @@ const NetworkStatus = () => {
       <p>Network status: {state}</p>
       <p>{isOnline ? 'You are Online' : 'You are Offline'}</p>
     </div>
-  )
-}
+  );
+};
 ```
 
 ### Parameters
@@ -77,23 +77,23 @@ Custom hook providing a simple interface for copying to and pasting from the sys
 ### Usage
 
 ```jsx
-import React, { useState } from 'react'
-import useCopyPaste from 'use-termite'
+import React, { useState } from 'react';
+import useCopyPaste from 'use-termite';
 
 const ClipboardComponent = () => {
-  const [text, setText] = useState('')
-  const { copy, paste } = useCopyPaste()
+  const [text, setText] = useState('');
+  const { copy, paste } = useCopyPaste();
 
   const handleCopy = async () => {
-    await copy('Text to copy')
-    console.log('Text copied to clipboard!')
-  }
+    await copy('Text to copy');
+    console.log('Text copied to clipboard!');
+  };
 
   const handlePaste = async () => {
-    const pastedText = await paste()
-    setText(pastedText)
-    console.log('Text pasted from clipboard:', pastedText)
-  }
+    const pastedText = await paste();
+    setText(pastedText);
+    console.log('Text pasted from clipboard:', pastedText);
+  };
 
   return (
     <div>
@@ -101,8 +101,8 @@ const ClipboardComponent = () => {
       <button onClick={handlePaste}>Paste from Clipboard</button>
       <p>Pasted Text: {text}</p>
     </div>
-  )
-}
+  );
+};
 ```
 
 In this example, `useCopyPaste` is used to copy a string to the clipboard and paste from it. It provides buttons for both actions and displays the pasted text.
@@ -134,11 +134,11 @@ Custom hook to toggle dark mode in your application. It integrates seamlessly wi
 ### Usage
 
 ```jsx
-import React from 'react'
-import useDarkMode from 'use-termite'
+import React from 'react';
+import useDarkMode from 'use-termite';
 
 const ThemeToggler = () => {
-  const { mode, toggle } = useDarkMode()
+  const { mode, toggle } = useDarkMode();
 
   return (
     <div className={mode === 'dark' ? 'dark' : ''}>
@@ -147,8 +147,8 @@ const ThemeToggler = () => {
         <button onClick={toggle}>Switch to {mode === 'dark' ? 'Light' : 'Dark'} Mode</button>
       </div>
     </div>
-  )
-}
+  );
+};
 ```
 
 This component uses Tailwind CSS classes to demonstrate how you might apply the dark mode in your application. The `dark` class is conditionally applied to the top-level `div` based on the current mode. Tailwind CSS will handle the rest, applying the appropriate styles when the `dark` class is present.
@@ -163,7 +163,7 @@ module.exports = {
   // ...
   darkMode: 'class' // or 'media' if you want to automatically switch based on user's system preferences
   // ...
-}
+};
 ```
 
 Setting `darkMode` to `'class'` tells Tailwind to apply dark mode styles when the `.dark` class is present on the `html` or any parent element. This works perfectly with the `useDarkMode` hook, as it toggles this class based on the user's selection.
@@ -195,11 +195,11 @@ Custom hook that simplifies interacting with the browser's localStorage. It work
 ### Usage
 
 ```jsx
-import React from 'react'
-import useLocalStorage from 'use-termite'
+import React from 'react';
+import useLocalStorage from 'use-termite';
 
 const LocalStorageComponent = () => {
-  const [username, setUsername] = useLocalStorage('username', 'JohnDoe')
+  const [username, setUsername] = useLocalStorage('username', 'JohnDoe');
   /*
     If 'username' exists in localStorage, the value of the 'username' state 
     will be localStorage.getItem('username'). If 'username' doesn't exist in 
@@ -208,16 +208,16 @@ const LocalStorageComponent = () => {
   */
 
   const handleChange = event => {
-    setUsername(event.target.value)
-  }
+    setUsername(event.target.value);
+  };
 
   return (
     <div>
       <input type='text' value={username} onChange={handleChange} />
       <p>Username is {username}</p>
     </div>
-  )
-}
+  );
+};
 ```
 
 In this example, `useLocalStorage` is used to keep track of a 'username'. The hook initializes the 'username' state from localStorage if available, otherwise sets it to a default value ('JohnDoe'). When the username is updated via `setUsername`, the new value is also saved to localStorage.
@@ -247,22 +247,22 @@ Custom hook for making HTTP requests using the Fetch API. It's designed to fetch
 ### Usage
 
 ```jsx
-import React from 'react'
-import useFetch from 'use-termite'
+import React from 'react';
+import useFetch from 'use-termite';
 
 const FetchComponent = () => {
-  const { data, isError, error, loading, refresh } = useFetch('https://api.example.com/data', true)
+  const { data, isError, error, loading, refresh } = useFetch('https://api.example.com/data', true);
 
-  if (loading) return <div>Loading...</div>
-  if (isError) return <div>Error: {error}</div>
+  if (loading) return <div>Loading...</div>;
+  if (isError) return <div>Error: {error}</div>;
 
   return (
     <div>
       <button onClick={refresh}>Refresh Data</button>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
-  )
-}
+  );
+};
 ```
 
 In this example, `useFetch` is used to retrieve data from 'https://api.example.com/data'. It displays the data in a formatted manner and provides a button to refresh the data. It also handles the loading and error states, displaying appropriate messages.
@@ -297,34 +297,34 @@ Custom hook to detect clicks outside a specified DOM element. It's useful for ha
 ### Usage
 
 ```jsx
-import React, { useRef } from 'react'
-import useClickOutside from 'use-termite'
+import React, { useRef } from 'react';
+import useClickOutside from 'use-termite';
 
 const Modal = ({ onClose }) => {
-  const modalRef = useRef()
+  const modalRef = useRef();
 
   useClickOutside(modalRef, () => {
     // This function is called when a click is detected outside the modalRef element
-    onClose()
-  })
+    onClose();
+  });
 
   return (
     <div ref={modalRef}>
       <p>This is a modal! Click outside to close.</p>
     </div>
-  )
-}
+  );
+};
 
 const App = () => {
-  const [isModalOpen, setModalOpen] = React.useState(false)
+  const [isModalOpen, setModalOpen] = React.useState(false);
 
   return (
     <div>
       <button onClick={() => setModalOpen(true)}>Open Modal</button>
       {isModalOpen && <Modal onClose={() => setModalOpen(false)} />}
     </div>
-  )
-}
+  );
+};
 ```
 
 In this example, `useClickOutside` is used to detect a click outside of the `Modal` component. When the click is detected, the `onClose` callback is called, which updates the state in the parent `App` component and closes the modal.
@@ -347,11 +347,11 @@ Custom hook that creates a counter with the ability to increment and decrement i
 ### Usage
 
 ```jsx
-import React from 'react'
-import useCounter from 'use-termite'
+import React from 'react';
+import useCounter from 'use-termite';
 
 const CounterComponent = () => {
-  const { up, down, amount } = useCounter(10) // Initialize counter with 10
+  const { up, down, amount } = useCounter(10); // Initialize counter with 10
   /*
     'up' will increment the counter,
     'down' will decrement the counter,
@@ -364,8 +364,8 @@ const CounterComponent = () => {
       <button onClick={up}>Increase</button>
       <button onClick={down}>Decrease</button>
     </div>
-  )
-}
+  );
+};
 ```
 
 In this example, `useCounter` is used to keep track of a count value. The counter is initialized with a value of 10. The `up` function increments the count, the `down` function decrements it, and `amount` reflects the current count.
@@ -395,21 +395,21 @@ Custom hook to determine if the mouse is hovering over a specified element. It a
 ### Usage
 
 ```jsx
-import React, { useRef } from 'react'
-import useIsHovered from 'use-termite'
+import React, { useRef } from 'react';
+import useIsHovered from 'use-termite';
 
 const HoverComponent = () => {
-  const divRef = useRef(null)
+  const divRef = useRef(null);
   const isHovered = useIsHovered(divRef, hoverState => {
-    console.log(`Is hovered: ${hoverState}`)
-  })
+    console.log(`Is hovered: ${hoverState}`);
+  });
 
   return (
     <div ref={divRef} style={{ width: '200px', height: '200px', background: isHovered ? 'blue' : 'red' }}>
       Hover over me!
     </div>
-  )
-}
+  );
+};
 ```
 
 In this example, `useIsHovered` is used to determine if the `div` element is being hovered over. The background color of the `div` changes based on the hover state, and the hover state is logged to the console.
@@ -434,27 +434,27 @@ Custom hook to interact with browser cookies, providing methods to get, set, and
 ### Usage
 
 ```jsx
-import React, { useState } from 'react'
-import useCookies from 'use-termite'
+import React, { useState } from 'react';
+import useCookies from 'use-termite';
 
 const CookieComponent = () => {
-  const { getCookie, setCookie, deleteCookie } = useCookies()
-  const [cookieValue, setCookieValue] = useState('')
+  const { getCookie, setCookie, deleteCookie } = useCookies();
+  const [cookieValue, setCookieValue] = useState('');
 
   const handleSetCookie = () => {
-    setCookie('user', 'JohnDoe', { path: '/', maxAge: 3600 })
-    alert('Cookie set')
-  }
+    setCookie('user', 'JohnDoe', { path: '/', maxAge: 3600 });
+    alert('Cookie set');
+  };
 
   const handleGetCookie = () => {
-    const value = getCookie('user')
-    setCookieValue(value)
-  }
+    const value = getCookie('user');
+    setCookieValue(value);
+  };
 
   const handleDeleteCookie = () => {
-    deleteCookie('user')
-    alert('Cookie deleted')
-  }
+    deleteCookie('user');
+    alert('Cookie deleted');
+  };
 
   return (
     <div>
@@ -463,8 +463,8 @@ const CookieComponent = () => {
       <button onClick={handleDeleteCookie}>Delete Cookie</button>
       <p>Cookie Value: {cookieValue}</p>
     </div>
-  )
-}
+  );
+};
 ```
 
 In this example, `useCookies` is used to set, get, and delete a cookie named 'user'. The user can interact with cookies through the buttons.
@@ -490,14 +490,14 @@ Custom hook to evaluate and respond to CSS media queries. It returns a boolean v
 ### Usage
 
 ```jsx
-import React from 'react'
-import useMediaQuery from 'use-termite'
+import React from 'react';
+import useMediaQuery from 'use-termite';
 
 const ResponsiveComponent = () => {
-  const isSmallDevice = useMediaQuery('only screen and (max-width : 768px)')
-  const isMediumDevice = useMediaQuery('only screen and (min-width : 769px) and (max-width : 992px)')
-  const isLargeDevice = useMediaQuery('only screen and (min-width : 993px) and (max-width : 1200px)')
-  const isExtraLargeDevice = useMediaQuery('only screen and (min-width : 1201px)')
+  const isSmallDevice = useMediaQuery('only screen and (max-width : 768px)');
+  const isMediumDevice = useMediaQuery('only screen and (min-width : 769px) and (max-width : 992px)');
+  const isLargeDevice = useMediaQuery('only screen and (min-width : 993px) and (max-width : 1200px)');
+  const isExtraLargeDevice = useMediaQuery('only screen and (min-width : 1201px)');
 
   return (
     <div>
@@ -506,8 +506,8 @@ const ResponsiveComponent = () => {
       {isLargeDevice && <p>You are on a large device.</p>}
       {isExtraLargeDevice && <p>You are on an extra large device.</p>}
     </div>
-  )
-}
+  );
+};
 ```
 
 In this example, `useMediaQuery` is used to determine the size of the device based on the screen width. It conditionally renders text based on the current device size. This is useful for creating responsive designs that adapt to different screen sizes.
@@ -529,14 +529,14 @@ Custom hook to determine if the code is running in a client environment (i.e., i
 ### Usage
 
 ```jsx
-import React from 'react'
-import useIsClient from 'use-termite'
+import React from 'react';
+import useIsClient from 'use-termite';
 
 const ClientCheckerComponent = () => {
-  const isClient = useIsClient()
+  const isClient = useIsClient();
 
-  return <div>{isClient ? <p>This is running in the client.</p> : <p>This is running on the server.</p>}</div>
-}
+  return <div>{isClient ? <p>This is running in the client.</p> : <p>This is running on the server.</p>}</div>;
+};
 ```
 
 In this example, `useIsClient` is used to check if the code is running in a client environment. It conditionally renders a message based on whether the code is running on the server or in the client. This can help you avoid trying to use browser-specific features during server-side rendering.
@@ -558,18 +558,18 @@ Custom hook to dynamically set the document title. It's a simple and effective w
 ### Usage
 
 ```jsx
-import React, { useEffect } from 'react'
-import useTitle from 'use-termite'
+import React, { useEffect } from 'react';
+import useTitle from 'use-termite';
 
 const TitleComponent = ({ title }) => {
-  useTitle(title)
+  useTitle(title);
 
-  return <div>Check the document title!</div>
-}
+  return <div>Check the document title!</div>;
+};
 
 const App = () => {
-  return <TitleComponent title='Welcome to the useTitle Hook!' />
-}
+  return <TitleComponent title='Welcome to the useTitle Hook!' />;
+};
 ```
 
 In this example, `useTitle` is used to set the document's title to a specified string. When the component is rendered, the document title will update to "Welcome to the useTitle Hook!".
@@ -591,20 +591,20 @@ Custom hook that listens for a specific key press and executes a callback functi
 ### Usage
 
 ```jsx
-import React from 'react'
-import useKeyPress from 'use-termite'
+import React from 'react';
+import useKeyPress from 'use-termite';
 
 const KeyPressComponent = () => {
   // Define the callback function
   const handleEnterPress = () => {
-    console.log('Enter key is pressed!')
-  }
+    console.log('Enter key is pressed!');
+  };
 
   // Use the useKeyPress hook
-  useKeyPress('Enter', handleEnterPress)
+  useKeyPress('Enter', handleEnterPress);
 
-  return <div>Press the Enter key and check the console!</div>
-}
+  return <div>Press the Enter key and check the console!</div>;
+};
 ```
 
 In this example, `useKeyPress` is used to listen for the 'Enter' key press. When the 'Enter' key is pressed, the `handleEnterPress` callback function is executed, logging a message to the console.
@@ -627,14 +627,14 @@ Custom hook to count and log the number of times a component has re-rendered. Th
 ### Usage
 
 ```jsx
-import React from 'react'
-import useRenderCount from 'use-termite'
+import React from 'react';
+import useRenderCount from 'use-termite';
 
 const MyComponent = () => {
-  useRenderCount('MyComponent')
+  useRenderCount('MyComponent');
 
-  return <div>Check the console to see the render count!</div>
-}
+  return <div>Check the console to see the render count!</div>;
+};
 ```
 
 In this example, `useRenderCount` is used to track how many times `MyComponent` has been re-rendered. Each time the component renders, the count will increase and the current count will be logged to the console with the component's name.
@@ -656,20 +656,20 @@ Custom hook to determine if the current render is the first render of the compon
 ### Usage
 
 ```jsx
-import React from 'react'
-import useIsFirstRender from 'use-termite'
+import React from 'react';
+import useIsFirstRender from 'use-termite';
 
 const Component = () => {
-  const isFirstRender = useIsFirstRender()
+  const isFirstRender = useIsFirstRender();
 
   if (isFirstRender) {
-    console.log('This is the first render!')
+    console.log('This is the first render!');
   } else {
-    console.log('Subsequent render.')
+    console.log('Subsequent render.');
   }
 
-  return <div>{isFirstRender ? 'First Render' : 'Not First Render'}</div>
-}
+  return <div>{isFirstRender ? 'First Render' : 'Not First Render'}</div>;
+};
 ```
 
 In this example, `useIsFirstRender` is used to check if the component is rendering for the first time. It logs a message to the console indicating whether it's the first or a subsequent render and displays a text in the component accordingly.
@@ -691,11 +691,11 @@ Custom hook to determine and track the orientation of the user's device. It prov
 ### Usage
 
 ```jsx
-import React from 'react'
-import useOrientation from 'use-termite'
+import React from 'react';
+import useOrientation from 'use-termite';
 
 const OrientationComponent = () => {
-  const { isPortrait, isLandscape, state } = useOrientation()
+  const { isPortrait, isLandscape, state } = useOrientation();
 
   return (
     <div>
@@ -703,8 +703,8 @@ const OrientationComponent = () => {
       <p>{isPortrait ? 'You are in Portrait mode.' : 'You are not in Portrait mode.'}</p>
       <p>{isLandscape ? 'You are in Landscape mode.' : 'You are not in Landscape mode.'}</p>
     </div>
-  )
-}
+  );
+};
 ```
 
 In this example, `useOrientation` is used to determine the current orientation of the device. It sets the `state` to either "portrait" or "landscape", and updates the `isPortrait` and `isLandscape` booleans accordingly.
@@ -730,11 +730,11 @@ Custom hook to determine and track the type of device based on screen width. It 
 ### Usage
 
 ```jsx
-import React from 'react'
-import useDevice from 'use-termite'
+import React from 'react';
+import useDevice from 'use-termite';
 
 const DeviceComponent = () => {
-  const { state, isMobile, isTablet, isDesktop } = useDevice()
+  const { state, isMobile, isTablet, isDesktop } = useDevice();
 
   return (
     <div>
@@ -743,8 +743,8 @@ const DeviceComponent = () => {
       <p>{isTablet ? 'You are using a Tablet device.' : ''}</p>
       <p>{isDesktop ? 'You are using a Desktop device.' : ''}</p>
     </div>
-  )
-}
+  );
+};
 ```
 
 In this example, `useDevice` is used to determine and display the type of device based on the screen width. It sets the `state` to "mobile", "tablet", or "desktop" and updates the corresponding boolean values accordingly.
@@ -771,11 +771,11 @@ Custom hook to get the user's current geographical location using the browser's 
 ### Usage
 
 ```jsx
-import React from 'react'
-import useLocation from 'use-termite'
+import React from 'react';
+import useLocation from 'use-termite';
 
 const LocationComponent = () => {
-  const { latitude, longitude, status } = useLocation()
+  const { latitude, longitude, status } = useLocation();
 
   return (
     <div>
@@ -786,8 +786,8 @@ const LocationComponent = () => {
         </p>
       ) : null}
     </div>
-  )
-}
+  );
+};
 ```
 
 In this example, `useLocation` is used to retrieve and display the user's current latitude and longitude. It also shows the status of the location retrieval, which can be useful for handling permissions or errors.
@@ -813,19 +813,19 @@ Custom hook that provides a convenient way to interact with a stack data structu
 ### Usage
 
 ```jsx
-import React from 'react'
-import useStack from 'use-termite'
+import React from 'react';
+import useStack from 'use-termite';
 
 const StackComponent = () => {
-  const { stack, push, pop, clear, isEmpty, peek, printStack, size } = useStack(['initial', 'values'])
+  const { stack, push, pop, clear, isEmpty, peek, printStack, size } = useStack(['initial', 'values']);
 
   const handlePush = () => {
-    push('New Item')
-  }
+    push('New Item');
+  };
 
   const handlePop = () => {
-    pop()
-  }
+    pop();
+  };
 
   return (
     <div>
@@ -838,8 +838,8 @@ const StackComponent = () => {
       <div>Stack size: {size}</div>
       <div>Full stack: {printStack()}</div>
     </div>
-  )
-}
+  );
+};
 ```
 
 </br>
@@ -876,31 +876,31 @@ Custom hook to implement and interact with a linked list data structure in your 
 ### Usage
 
 ```jsx
-import useKeyPress from 'use-termite'
-import useList from 'use-termite'
+import useKeyPress from 'use-termite';
+import useList from 'use-termite';
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react';
 
 const App = () => {
-  const { append, list, size, pop, clear, insertAfter, deleteItem, shift, prepend } = useList()
+  const { append, list, size, pop, clear, insertAfter, deleteItem, shift, prepend } = useList();
 
-  const inpRef = useRef(null)
+  const inpRef = useRef(null);
 
   useKeyPress('Enter', () => {
     if (inpRef && inpRef.current && inpRef.current.value) {
-      append(inpRef.current.value)
+      append(inpRef.current.value);
     }
-  })
+  });
 
   useKeyPress('Escape', () => {
     if (inpRef && inpRef.current && inpRef.current.value) {
-      pop()
+      pop();
     }
-  })
+  });
 
   useEffect(() => {
-    console.log(list)
-  }, [list])
+    console.log(list);
+  }, [list]);
 
   return (
     <div>
@@ -917,10 +917,10 @@ const App = () => {
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
 ```
 
 In this example, `useList` is used to create and manipulate a linked list. You can insert items at the end, remove items from the end, find an item by value, and view all items in the list.
@@ -952,19 +952,19 @@ Custom hook that provides a convenient way to interact with a queue data structu
 ### Usage
 
 ```jsx
-import React from 'react'
-import useQueue from 'use-termite'
+import React from 'react';
+import useQueue from 'use-termite';
 
 const QueueComponent = () => {
-  const { queue, enqueue, dequeue, size } = useQueue(['first', 'second'])
+  const { queue, enqueue, dequeue, size } = useQueue(['first', 'second']);
 
   const handleEnqueue = () => {
-    enqueue('New Item')
-  }
+    enqueue('New Item');
+  };
 
   const handleDequeue = () => {
-    dequeue()
-  }
+    dequeue();
+  };
 
   return (
     <div>
@@ -979,8 +979,8 @@ const QueueComponent = () => {
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 ```
 
 In this example, `useQueue` is used to manage a queue of values. The hook initializes the queue with initial values if provided. It offers functions to `enqueue` (add an item to the end of the queue) and `dequeue` (remove an item from the front of the queue).
@@ -1009,11 +1009,11 @@ Custom hook to implement a countdown timer in your React components. It accepts 
 ### Usage
 
 ```jsx
-import React from 'react'
-import useCountDown from 'use-termite'
+import React from 'react';
+import useCountDown from 'use-termite';
 
 const CountDownComponent = ({ initialTime }) => {
-  const { leftTime, started, ended, isCounting, start, reset } = useCountDown(initialTime)
+  const { leftTime, started, ended, isCounting, start, reset } = useCountDown(initialTime);
 
   return (
     <div>
@@ -1025,8 +1025,8 @@ const CountDownComponent = ({ initialTime }) => {
       </button>
       <button onClick={reset}>Reset Countdown</button>
     </div>
-  )
-}
+  );
+};
 ```
 
 In this example, `useCountDown` is used to create a countdown timer. You can start the countdown, check the time left, and reset the countdown.
@@ -1055,25 +1055,25 @@ Custom hook to easily add and remove event listeners to a DOM element. It accept
 ### Usage
 
 ```jsx
-import React, { useRef } from 'react'
-import useEventListener from 'use-termite'
+import React, { useRef } from 'react';
+import useEventListener from 'use-termite';
 
 const EventListenerComponent = () => {
-  const buttonRef = useRef(null)
+  const buttonRef = useRef(null);
 
   const handleClick = () => {
-    console.log('Button was clicked!')
-  }
+    console.log('Button was clicked!');
+  };
 
   // Using the useEventListener hook
-  useEventListener(buttonRef, 'click', handleClick)
+  useEventListener(buttonRef, 'click', handleClick);
 
   return (
     <div>
       <button ref={buttonRef}>Click me!</button>
     </div>
-  )
-}
+  );
+};
 ```
 
 In this example, `useEventListener` is used to add a click event listener to a button. When the button is clicked, the `handleClick` function is executed, logging a message to the console.
@@ -1089,3 +1089,27 @@ In this example, `useEventListener` is used to add a click event listener to a b
 None. The hook directly sets up the event listener on the specified element.
 
 </br>
+
+# Contribution Guidelines
+
+Documentation for each hook should follow this template.
+
+## Name
+
+Description goes here.
+
+### Usage
+
+```jsx
+//Code Example here...
+```
+
+### Parameters
+
+List the parameters passed to the hook, their type and description as ordered list.
+
+> Note : If the parameter is optional mention it.
+
+### Return value
+
+Specify the value return by the hook, with type and description.
