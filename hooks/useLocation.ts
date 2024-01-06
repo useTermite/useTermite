@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
 // Define the possible status messages
-type Status = 'idle' | 'pending' | 'success' | 'error'
+type Status = 'idle' | 'pending' | 'success' | 'error';
 
 interface LocationInfo {
-  latitude: number | null
-  longitude: number | null
-  status: Status
+  latitude: number | null;
+  longitude: number | null;
+  status: Status;
 }
 
 // This hook returns the current location of the device
@@ -15,7 +15,7 @@ const useLocation = (): LocationInfo => {
     latitude: null,
     longitude: null,
     status: 'idle'
-  })
+  });
 
   useEffect(() => {
     // Helper function to update location state
@@ -24,29 +24,29 @@ const useLocation = (): LocationInfo => {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
         status: 'success'
-      })
-    }
+      });
+    };
 
     // Helper function to handle errors
     const handleError = (error: GeolocationPositionError) => {
       setLocation(prevState => ({
         ...prevState,
         status: 'error'
-      }))
-      console.error(`Error occurred: ${error.message}`)
-    }
+      }));
+      console.error(`Error occurred: ${error.message}`);
+    };
 
     // Request the current location
     if (navigator.geolocation) {
-      setLocation(prevState => ({ ...prevState, status: 'pending' }))
-      navigator.geolocation.getCurrentPosition(updateLocation, handleError)
+      setLocation(prevState => ({ ...prevState, status: 'pending' }));
+      navigator.geolocation.getCurrentPosition(updateLocation, handleError);
     } else {
-      setLocation(prevState => ({ ...prevState, status: 'error' }))
-      console.error('Geolocation is not supported by this browser.')
+      setLocation(prevState => ({ ...prevState, status: 'error' }));
+      console.error('Geolocation is not supported by this browser.');
     }
-  }, [])
+  }, []);
 
-  return location
-}
+  return location;
+};
 
-export default useLocation
+export default useLocation;

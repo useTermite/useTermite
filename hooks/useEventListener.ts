@@ -1,8 +1,8 @@
-import { useEffect, RefObject } from 'react'
+import { useEffect, RefObject } from 'react';
 
 // Define the type for the callback function
-type EventCallback = (event: Event) => void
-type DOMEventType = keyof GlobalEventHandlersEventMap
+type EventCallback = (event: Event) => void;
+type DOMEventType = keyof GlobalEventHandlersEventMap;
 
 // Custom hook to add and remove event listeners on a DOM element
 const useEventListener = (
@@ -12,18 +12,18 @@ const useEventListener = (
 ): void => {
   useEffect(() => {
     // Access the DOM element from the ref
-    const element = ref.current
+    const element = ref.current;
 
     if (element) {
       // Add event listener
-      element.addEventListener(event, callback)
+      element.addEventListener(event, callback);
 
       // Remove event listener on cleanup
       return () => {
-        element.removeEventListener(event, callback)
-      }
+        element.removeEventListener(event, callback);
+      };
     }
-  }, [ref, event, callback]) // Re-run effect when ref, event, or callback change
-}
+  }, [ref, event, callback]); // Re-run effect when ref, event, or callback change
+};
 
-export default useEventListener
+export default useEventListener;
