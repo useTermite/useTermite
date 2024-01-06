@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 interface NetworkState {
   isOnline: boolean
-  state: string
+  state: 'online' | 'offline'
 }
 
 const useNetworkState = (): NetworkState => {
