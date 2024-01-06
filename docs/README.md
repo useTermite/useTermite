@@ -13,8 +13,8 @@
 9. [useIsHovered](#-useIsHovered)
 10. [useMediaQuery](#-usemediaquery)
 11. [useIsClient](#-useisclient)
-12. [useTitle](#-usetitle)
-13. [useKeyPress](#-usekeypress)
+12. [useTitle](#%EF%B8%8F-usetitle)
+13. [useKeyPress](#%EF%B8%8F-usekeypress)
 14. [useRenderCount](#-userendercount)
 15. [useIsFirstRender](#-useisfirstrender)
 16. [useOrientation](#-useorientation)
@@ -23,8 +23,7 @@
 19. [useStack](#-usestack)
 20. [useList](#-uselist)
 21. [useQueue](#-usequeue)
-22. [useCountDown](#-usecountdown)
-23. a little bit of creativity [useEventListener](#-useeventlistener)
+22. a little bit of creativity [useEventListener](#-useeventlistener)
 
 </br>
 
@@ -36,7 +35,7 @@ Custom hook to track the network state of the user's device, providing informati
 
 ```jsx
 import React from 'react'
-import { useNetworkState } from 'use-termite'
+import useNetworkState from 'use-termite'
 
 const NetworkStatus = () => {
   const { isOnline, state } = useNetworkState()
@@ -79,7 +78,7 @@ Custom hook providing a simple interface for copying to and pasting from the sys
 
 ```jsx
 import React, { useState } from 'react'
-import { useCopyPaste } from 'use-your-hooks-package'
+import useCopyPaste from 'use-termite'
 
 const ClipboardComponent = () => {
   const [text, setText] = useState('')
@@ -136,7 +135,7 @@ Custom hook to toggle dark mode in your application. It integrates seamlessly wi
 
 ```jsx
 import React from 'react'
-import { useDarkMode } from 'use-termite'
+import useDarkMode from 'use-termite'
 
 const ThemeToggler = () => {
   const { mode, toggle } = useDarkMode()
@@ -197,7 +196,7 @@ Custom hook that simplifies interacting with the browser's localStorage. It work
 
 ```jsx
 import React from 'react'
-import { useLocalStorage } from 'use-termite'
+import useLocalStorage from 'use-termite'
 
 const LocalStorageComponent = () => {
   const [username, setUsername] = useLocalStorage('username', 'JohnDoe')
@@ -249,7 +248,7 @@ Custom hook for making HTTP requests using the Fetch API. It's designed to fetch
 
 ```jsx
 import React from 'react'
-import { useFetch } from 'use-your-hooks-package'
+import useFetch from 'use-termite'
 
 const FetchComponent = () => {
   const { data, isError, error, loading, refresh } = useFetch('https://api.example.com/data', true)
@@ -299,7 +298,7 @@ Custom hook to detect clicks outside a specified DOM element. It's useful for ha
 
 ```jsx
 import React, { useRef } from 'react'
-import { useClickOutside } from 'use-termite'
+import useClickOutside from 'use-termite'
 
 const Modal = ({ onClose }) => {
   const modalRef = useRef()
@@ -349,7 +348,7 @@ Custom hook that creates a counter with the ability to increment and decrement i
 
 ```jsx
 import React from 'react'
-import { useCounter } from 'use-termite'
+import useCounter from 'use-termite'
 
 const CounterComponent = () => {
   const { up, down, amount } = useCounter(10) // Initialize counter with 10
@@ -397,7 +396,7 @@ Custom hook to determine if the mouse is hovering over a specified element. It a
 
 ```jsx
 import React, { useRef } from 'react'
-import { useIsHovered } from 'use-your-hooks-package'
+import useIsHovered from 'use-termite'
 
 const HoverComponent = () => {
   const divRef = useRef(null)
@@ -436,7 +435,7 @@ Custom hook to interact with browser cookies, providing methods to get, set, and
 
 ```jsx
 import React, { useState } from 'react'
-import { useCookies } from 'use-termite'
+import useCookies from 'use-termite'
 
 const CookieComponent = () => {
   const { getCookie, setCookie, deleteCookie } = useCookies()
@@ -492,7 +491,7 @@ Custom hook to evaluate and respond to CSS media queries. It returns a boolean v
 
 ```jsx
 import React from 'react'
-import { useMediaQuery } from 'use-termite'
+import useMediaQuery from 'use-termite'
 
 const ResponsiveComponent = () => {
   const isSmallDevice = useMediaQuery('only screen and (max-width : 768px)')
@@ -531,7 +530,7 @@ Custom hook to determine if the code is running in a client environment (i.e., i
 
 ```jsx
 import React from 'react'
-import { useIsClient } from 'use-termite'
+import useIsClient from 'use-termite'
 
 const ClientCheckerComponent = () => {
   const isClient = useIsClient()
@@ -560,7 +559,7 @@ Custom hook to dynamically set the document title. It's a simple and effective w
 
 ```jsx
 import React, { useEffect } from 'react'
-import { useTitle } from 'use-termite'
+import useTitle from 'use-termite'
 
 const TitleComponent = ({ title }) => {
   useTitle(title)
@@ -593,7 +592,7 @@ Custom hook that listens for a specific key press and executes a callback functi
 
 ```jsx
 import React from 'react'
-import { useKeyPress } from 'use-termite'
+import useKeyPress from 'use-termite'
 
 const KeyPressComponent = () => {
   // Define the callback function
@@ -629,7 +628,7 @@ Custom hook to count and log the number of times a component has re-rendered. Th
 
 ```jsx
 import React from 'react'
-import { useRenderCount } from 'use-termite'
+import useRenderCount from 'use-termite'
 
 const MyComponent = () => {
   useRenderCount('MyComponent')
@@ -658,7 +657,7 @@ Custom hook to determine if the current render is the first render of the compon
 
 ```jsx
 import React from 'react'
-import { useIsFirstRender } from 'use-termite'
+import useIsFirstRender from 'use-termite'
 
 const Component = () => {
   const isFirstRender = useIsFirstRender()
@@ -693,7 +692,7 @@ Custom hook to determine and track the orientation of the user's device. It prov
 
 ```jsx
 import React from 'react'
-import { useOrientation } from 'use-termite'
+import useOrientation from 'use-termite'
 
 const OrientationComponent = () => {
   const { isPortrait, isLandscape, state } = useOrientation()
@@ -732,7 +731,7 @@ Custom hook to determine and track the type of device based on screen width. It 
 
 ```jsx
 import React from 'react'
-import { useDevice } from 'use-termite'
+import useDevice from 'use-termite'
 
 const DeviceComponent = () => {
   const { state, isMobile, isTablet, isDesktop } = useDevice()
@@ -773,7 +772,7 @@ Custom hook to get the user's current geographical location using the browser's 
 
 ```jsx
 import React from 'react'
-import { useLocation } from 'use-termite'
+import useLocation from 'use-termite'
 
 const LocationComponent = () => {
   const { latitude, longitude, status } = useLocation()
@@ -815,7 +814,7 @@ Custom hook that provides a convenient way to interact with a stack data structu
 
 ```jsx
 import React from 'react'
-import { useStack } from 'use-termite'
+import useStack from 'use-termite'
 
 const StackComponent = () => {
   const { stack, push, pop, clear, isEmpty, peek, printStack, size } = useStack(['initial', 'values'])
@@ -877,7 +876,9 @@ Custom hook to implement and interact with a linked list data structure in your 
 ### Usage
 
 ```jsx
-import { useKeyPress, useList } from 'use-termite'
+import useKeyPress from 'use-termite'
+import useList from 'use-termite'
+
 import { useEffect, useRef } from 'react'
 
 const App = () => {
@@ -952,7 +953,7 @@ Custom hook that provides a convenient way to interact with a queue data structu
 
 ```jsx
 import React from 'react'
-import { useQueue } from 'use-termite'
+import useQueue from 'use-termite'
 
 const QueueComponent = () => {
   const { queue, enqueue, dequeue, size } = useQueue(['first', 'second'])
@@ -1009,7 +1010,7 @@ Custom hook to implement a countdown timer in your React components. It accepts 
 
 ```jsx
 import React from 'react'
-import { useCountDown } from 'use-termite'
+import useCountDown from 'use-termite'
 
 const CountDownComponent = ({ initialTime }) => {
   const { leftTime, started, ended, isCounting, start, reset } = useCountDown(initialTime)
@@ -1055,7 +1056,7 @@ Custom hook to easily add and remove event listeners to a DOM element. It accept
 
 ```jsx
 import React, { useRef } from 'react'
-import { useEventListener } from 'use-termite'
+import useEventListener from 'use-termite'
 
 const EventListenerComponent = () => {
   const buttonRef = useRef(null)
