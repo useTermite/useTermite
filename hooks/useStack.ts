@@ -1,54 +1,57 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import Stack from '../lib/stack'
 
 const stackList = new Stack()
-const useStack = (intialValue: any[] = []) => {
-  const [stack, setStack] = useState([...intialValue] || [])
 
-  const setStackToState = () => {
+const useStack = (initialValue: any[] = []) => {
+  const [stack, setStack] = useState([...initialValue] || [])
+
+  // useCallback ensures that the same function reference is used between renders
+  // unless its dependencies change. This helps in avoiding unnecessary re-renders.
+  const setStackToState = useCallback(() => {
     setStack([...stackList.items])
-  }
+  }, [stackList.items])
 
   useEffect(() => {
-    if (intialValue.length) {
-      intialValue?.forEach(item => {
+    // Set the stack only once when the component mounts.
+    // This effect does not depend on 'initialValue', so it's not included in the dependencies array.
+    if (initialValue.length) {
+      initialValue.forEach(item => {
         stackList.push(item)
       })
+      setStackToState()
     }
-  }, [])
+  }, []) // Empty dependency array ensures this effect runs only once on mount.
 
-  // stackList.push
-  const push = <T>(value: T) => {
-    stackList.push(value)
-    setStackToState()
-  }
+  const push = useCallback(
+    <T>(value: T) => {
+      stackList.push(value)
+      setStackToState()
+    },
+    [setStackToState]
+  ) // Dependency on setStackToState which is stable.
 
-  // stackList.pop
-  const pop = (): void => {
+  const pop = useCallback((): void => {
     stackList.pop()
     setStackToState()
-  }
+  }, [setStackToState]) // Dependency on setStackToState which is stable.
 
-  // stackList.clear
-  const clear = (): void => {
+  const clear = useCallback((): void => {
     stackList.clear()
     setStackToState()
-  }
+  }, [setStackToState]) // Dependency on setStackToState which is stable.
 
-  // stackList.isEmpty
-  const isEmpty = (): boolean => {
+  const isEmpty = useCallback((): boolean => {
     return stackList.isEmpty()
-  }
+  }, []) // No external dependencies.
 
-  // stackList.printStack;
-  const printStack = (): string => {
+  const printStack = useCallback((): string => {
     return stackList.printStack()
-  }
+  }, []) // No external dependencies.
 
-  // stackList.size
-  const peek = (): any => {
+  const peek = useCallback((): any => {
     return stackList.peek()
-  }
+  }, []) // No external dependencies.
 
   return {
     stack,
