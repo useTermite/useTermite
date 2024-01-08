@@ -10,3 +10,4 @@ package.json
 vite.config.ts
 .prettierrc
 docs
+.CONTRIBUTING.md

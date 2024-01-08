@@ -17,7 +17,5 @@
       "*": ["node_modules/*", "src/types/*"]
     },
     "typeRoots": ["./node_modules/@types", "./src/types"]
-  },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["node_modules"]
+  }
 }
