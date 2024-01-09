@@ -1,7 +1,7 @@
 {
   "name": "use-termite",
   "private": false,
-  "version": "1.1.1",
+  "version": "1.1.2",
   "type": "module",
   "scripts": {
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -9,6 +9,8 @@
     "build": "webpack --mode production"
   },
   "devDependencies": {
+    "@types/node": "^20.10.7",
+    "@types/react": "^18.2.47",
     "@typescript-eslint/eslint-plugin": "^6.17.0",
     "@typescript-eslint/parser": "^6.17.0",
     "@vitejs/plugin-react": "^4.2.1",
@@ -56,7 +58,6 @@
   },
   "homepage": "https://github.com/useTermite/useTermite#readme",
   "dependencies": {
-    "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "ts-loader": "^9.5.1",
     "yarn": "^1.22.21"

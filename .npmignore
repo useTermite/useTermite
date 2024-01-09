@@ -1,13 +1,8 @@
 .husky
 node_modules
-public
-src
 .eslintcache
 .eslintrc.json
-index.html
 package-lock.json
-package.json
-vite.config.ts
 .prettierrc
 docs
 .CONTRIBUTING.md
