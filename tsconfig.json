@@ -1,25 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "outDir": "./dist",
+    "rootDir": "./",
+    "declaration": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "lib": ["dom", "esnext"],
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react-jsx" // if you have jsx in your hooks
   },
-  "include": ["src", "hooks", "hooks"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["hooks/**/*", "lib/**/*", "index.ts"],
+  "exclude": ["node_modules", "dist"]
 }

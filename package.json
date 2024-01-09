@@ -1,12 +1,12 @@
 {
   "name": "use-termite",
   "private": false,
-  "version": "1.1.2",
-  "type": "module",
+  "version": "1.1.3",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "build": "webpack --mode production"
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@types/node": "^20.10.7",
@@ -37,7 +37,6 @@
     ]
   },
   "description": "a collection of powerful custom hooks designed to simplify and enhance your React.js projects.",
-  "main": "index.ts",
   "directories": {
     "doc": "docs"
   },
