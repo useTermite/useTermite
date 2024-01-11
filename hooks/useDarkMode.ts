@@ -74,12 +74,12 @@ const useDarkMode = (): DarkModeHook => {
   }, [mode]);
 
   // Function to toggle between 'light' and 'dark' modes.
-  const toggle = (): void => {
+  const toggleHandler = (): void => {
     setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'));
   };
 
   // Return the current mode and the toggle function.
-  return { mode, toggle };
+  return { mode, toggle: toggleHandler };
 };
 
 export default useDarkMode;
