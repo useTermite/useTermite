@@ -36,7 +36,7 @@ Custom hook to track the network state of the user's device, providing informati
 
 ```jsx
 import React from 'react';
-import useNetworkState from 'use-termite';
+import { useNetworkState } from 'use-termite';
 
 const NetworkStatus = () => {
   const { isOnline, state } = useNetworkState();
@@ -79,7 +79,7 @@ Custom hook providing a simple interface for copying to and pasting from the sys
 
 ```jsx
 import React, { useState } from 'react';
-import useCopyPaste from 'use-termite';
+import { useCopyPaste } from 'use-termite';
 
 const ClipboardComponent = () => {
   const [text, setText] = useState('');
@@ -136,7 +136,7 @@ Custom hook to toggle dark mode in your application. It integrates seamlessly wi
 
 ```jsx
 import React from 'react';
-import useDarkMode from 'use-termite';
+import { useDarkMode } from 'use-termite';
 
 const ThemeToggler = () => {
   const { mode, toggle } = useDarkMode();
@@ -197,7 +197,7 @@ Custom hook that simplifies interacting with the browser's localStorage. It work
 
 ```jsx
 import React from 'react';
-import useLocalStorage from 'use-termite';
+import { useLocalStorage } from 'use-termite';
 
 const LocalStorageComponent = () => {
   const [username, setUsername] = useLocalStorage('username', 'JohnDoe');
@@ -249,7 +249,7 @@ Custom hook for making HTTP requests using the Fetch API. It's designed to fetch
 
 ```jsx
 import React from 'react';
-import useFetch from 'use-termite';
+import { useFetch } from 'use-termite';
 
 const FetchComponent = () => {
   const { data, isError, error, loading, refresh } = useFetch('https://api.example.com/data', true);
@@ -299,7 +299,7 @@ Custom hook to detect clicks outside a specified DOM element. It's useful for ha
 
 ```jsx
 import React, { useRef } from 'react';
-import useClickOutside from 'use-termite';
+import { useClickOutside } from 'use-termite';
 
 const Modal = ({ onClose }) => {
   const modalRef = useRef();
@@ -349,7 +349,7 @@ Custom hook that creates a counter with the ability to increment and decrement i
 
 ```jsx
 import React from 'react';
-import useCounter from 'use-termite';
+import { useCounter } from 'use-termite';
 
 const CounterComponent = () => {
   const { up, down, amount } = useCounter(10); // Initialize counter with 10
@@ -397,7 +397,7 @@ Custom hook to determine if the mouse is hovering over a specified element. It a
 
 ```jsx
 import React, { useRef } from 'react';
-import useIsHovered from 'use-termite';
+import { useIsHovered } from 'use-termite';
 
 const HoverComponent = () => {
   const divRef = useRef(null);
@@ -436,7 +436,7 @@ Custom hook to interact with browser cookies, providing methods to get, set, and
 
 ```jsx
 import React, { useState } from 'react';
-import useCookies from 'use-termite';
+import { useCookies } from 'use-termite';
 
 const CookieComponent = () => {
   const { getCookie, setCookie, deleteCookie } = useCookies();
@@ -492,7 +492,7 @@ Custom hook to evaluate and respond to CSS media queries. It returns a boolean v
 
 ```jsx
 import React from 'react';
-import useMediaQuery from 'use-termite';
+import { useMediaQuery } from 'use-termite';
 
 const ResponsiveComponent = () => {
   const isSmallDevice = useMediaQuery('only screen and (max-width : 768px)');
@@ -531,7 +531,7 @@ Custom hook to determine if the code is running in a client environment (i.e., i
 
 ```jsx
 import React from 'react';
-import useIsClient from 'use-termite';
+import { useIsClient } from 'use-termite';
 
 const ClientCheckerComponent = () => {
   const isClient = useIsClient();
@@ -560,7 +560,7 @@ Custom hook to dynamically set the document title. It's a simple and effective w
 
 ```jsx
 import React, { useEffect } from 'react';
-import useTitle from 'use-termite';
+import { useTitle } from 'use-termite';
 
 const TitleComponent = ({ title }) => {
   useTitle(title);
@@ -593,7 +593,7 @@ Custom hook that listens for a specific key press and executes a callback functi
 
 ```jsx
 import React from 'react';
-import useKeyPress from 'use-termite';
+import { useKeyPress } from 'use-termite';
 
 const KeyPressComponent = () => {
   // Define the callback function
@@ -629,7 +629,7 @@ Custom hook to count and log the number of times a component has re-rendered. Th
 
 ```jsx
 import React from 'react';
-import useRenderCount from 'use-termite';
+import { useRenderCount } from 'use-termite';
 
 const MyComponent = () => {
   useRenderCount('MyComponent');
@@ -658,7 +658,7 @@ Custom hook to determine if the current render is the first render of the compon
 
 ```jsx
 import React from 'react';
-import useIsFirstRender from 'use-termite';
+import { useIsFirstRender } from 'use-termite';
 
 const Component = () => {
   const isFirstRender = useIsFirstRender();
@@ -693,7 +693,7 @@ Custom hook to determine and track the orientation of the user's device. It prov
 
 ```jsx
 import React from 'react';
-import useOrientation from 'use-termite';
+import { useOrientation } from 'use-termite';
 
 const OrientationComponent = () => {
   const { isPortrait, isLandscape, state } = useOrientation();
@@ -732,7 +732,7 @@ Custom hook to determine and track the type of device based on screen width. It 
 
 ```jsx
 import React from 'react';
-import useDevice from 'use-termite';
+import { useDevice } from 'use-termite';
 
 const DeviceComponent = () => {
   const { state, isMobile, isTablet, isDesktop } = useDevice();
@@ -773,7 +773,7 @@ Custom hook to get the user's current geographical location using the browser's 
 
 ```jsx
 import React from 'react';
-import useLocation from 'use-termite';
+import { useLocation } from 'use-termite';
 
 const LocationComponent = () => {
   const { latitude, longitude, status } = useLocation();
@@ -815,7 +815,7 @@ Custom hook that provides a convenient way to interact with a stack data structu
 
 ```jsx
 import React from 'react';
-import useStack from 'use-termite';
+import { useStack } from 'use-termite';
 
 const StackComponent = () => {
   const { stack, push, pop, clear, isEmpty, peek, printStack, size } = useStack(['initial', 'values']);
@@ -877,9 +877,7 @@ Custom hook to implement and interact with a linked list data structure in your 
 ### Usage
 
 ```jsx
-import useKeyPress from 'use-termite';
-import useList from 'use-termite';
-
+import { useKeyPress, useList } from 'use-termite';
 import { useEffect, useRef } from 'react';
 
 const App = () => {
@@ -954,7 +952,7 @@ Custom hook that provides a convenient way to interact with a queue data structu
 
 ```jsx
 import React from 'react';
-import useQueue from 'use-termite';
+import { useQueue } from 'use-termite';
 
 const QueueComponent = () => {
   const { queue, enqueue, dequeue, size } = useQueue(['first', 'second']);
@@ -1003,49 +1001,45 @@ An object containing:
 
 </br>
 
-## ⏳ useCountDown
+## 🔊 useEventListener
 
-Custom hook to implement a countdown timer in your React components. It accepts a duration in milliseconds and provides the time left, along with booleans indicating the state of the countdown: whether it's started, ended, or actively counting down.
+Custom hook to easily add and remove event listeners to a DOM element. It accepts a ref to the element, the name of the event to listen for, and a callback function to execute when the event is triggered.
 
 ### Usage
 
 ```jsx
-import React from 'react';
-import useCountDown from 'use-termite';
+import React, { useRef } from 'react';
+import { useEventListener } from 'use-termite';
 
-const CountDownComponent = ({ initialTime }) => {
-  const { leftTime, started, ended, isCounting, start, reset } = useCountDown(initialTime);
+const EventListenerComponent = () => {
+  const buttonRef = useRef(null);
+
+  const handleClick = () => {
+    console.log('Button was clicked!');
+  };
+
+  // Using the useEventListener hook
+  useEventListener(buttonRef, 'click', handleClick);
 
   return (
     <div>
-      <p>Time left: {leftTime}ms</p>
-      <p>{started ? (ended ? 'Countdown ended' : 'Countdown started') : 'Not started yet'}</p>
-      <p>{isCounting ? 'Counting down...' : 'Paused'}</p>
-      <button onClick={start} disabled={started}>
-        Start Countdown
-      </button>
-      <button onClick={reset}>Reset Countdown</button>
+      <button ref={buttonRef}>Click me!</button>
     </div>
   );
 };
 ```
 
-In this example, `useCountDown` is used to create a countdown timer. You can start the countdown, check the time left, and reset the countdown.
+In this example, `useEventListener` is used to add a click event listener to a button. When the button is clicked, the `handleClick` function is executed, logging a message to the console.
 
 ### Parameters
 
-1. `initialTime` (_number_): The initial time in milliseconds for the countdown.
+1. `ref` (_React.RefObject_): A ref object pointing to the DOM element to which the event listener will be attached.
+2. `event` (_String_): The name of the event to listen for (e.g., 'click', 'mouseover').
+3. `callback` (_function_): The function to execute when the event is triggered.
 
 ### Return value
 
-`{ leftTime, started, ended, isCounting, start, reset }`
-
-1. `leftTime` (_number_): The time left in milliseconds.
-2. `started` (_boolean_): Boolean indicating whether the countdown has been started.
-3. `ended` (_boolean_): Boolean indicating whether the countdown has ended.
-4. `isCounting` (_boolean_): Boolean indicating whether the countdown is actively counting down.
-5. `start` (_function_): Function to start the countdown.
-6. `reset` (_function_): Function to reset the countdown to the initial time.
+None. The hook directly sets up the event listener on the specified element.
 
 </br>
 
@@ -1057,7 +1051,7 @@ A Custom hook to force a re-render whenever necessary - useful when working with
 
 ```jsx
 import React from 'react';
-import useForceUpdate from 'use-termite';
+import { useForceUpdate } from 'use-termite';
 
 const Sample = () => {
   const [forceUpdate, state] = useForceUpdate();
@@ -1093,50 +1087,7 @@ None.
 1. `forceUpdate` (_Function_) : a function to force a re-render
 2. `state` (_Boolean_) : the related state updating which forces the re-render
 
-</br>
----
-
-## 🔊 useEventListener
-
-Custom hook to easily add and remove event listeners to a DOM element. It accepts a ref to the element, the name of the event to listen for, and a callback function to execute when the event is triggered.
-
-### Usage
-
-```jsx
-import React, { useRef } from 'react';
-import useEventListener from 'use-termite';
-
-const EventListenerComponent = () => {
-  const buttonRef = useRef(null);
-
-  const handleClick = () => {
-    console.log('Button was clicked!');
-  };
-
-  // Using the useEventListener hook
-  useEventListener(buttonRef, 'click', handleClick);
-
-  return (
-    <div>
-      <button ref={buttonRef}>Click me!</button>
-    </div>
-  );
-};
-```
-
-In this example, `useEventListener` is used to add a click event listener to a button. When the button is clicked, the `handleClick` function is executed, logging a message to the console.
-
-### Parameters
-
-1. `ref` (_React.RefObject_): A ref object pointing to the DOM element to which the event listener will be attached.
-2. `event` (_String_): The name of the event to listen for (e.g., 'click', 'mouseover').
-3. `callback` (_function_): The function to execute when the event is triggered.
-
-### Return value
-
-None. The hook directly sets up the event listener on the specified element.
-
-</br>
+## </br>
 
 # Contribution Guidelines
 
