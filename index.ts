@@ -12,6 +12,7 @@ export { default as useIsHovered } from './hooks/useIsHovered';
 export { default as useKeyPress } from './hooks/useKeyPress';
 export { default as useList } from './hooks/useList';
 export { default as useLocalStorage } from './hooks/useLocalStorage';
+export { default as useSessionStorage } from './hooks/useSessionStorage';
 export { default as useLocation } from './hooks/useLocation';
 export { default as useMediaQuery } from './hooks/useMediaQuery';
 export { default as useNetworkState } from './hooks/useNetworkState';

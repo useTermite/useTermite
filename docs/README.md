@@ -6,25 +6,26 @@
 2. [useCopyPaste](#-usecopypaste)
 3. [useDarkMode](#-usedarkmode)
 4. [useLocalStorage](#-uselocalstorage)
-5. [useFetch](#-usefetch)
-6. [useClickOutside](#-useclickoutside)
-7. [useCounter](#-usecounter)
-8. [useCookies](#-usecookies)
-9. [useIsHovered](#-useIsHovered)
-10. [useMediaQuery](#-usemediaquery)
-11. [useIsClient](#-useisclient)
-12. [useTitle](#%EF%B8%8F-usetitle)
-13. [useKeyPress](#%EF%B8%8F-usekeypress)
-14. [useRenderCount](#-userendercount)
-15. [useIsFirstRender](#-useisfirstrender)
-16. [useOrientation](#-useorientation)
-17. [useDevice](#-usedevice)
-18. [useLocation](#-uselocation)
-19. [useStack](#-usestack)
-20. [useList](#-uselist)
-21. [useQueue](#-usequeue)
-22. [useForceUpdate](#-useforceupdate)
-23. a little bit of creativity [useEventListener](#-useeventlistener)
+5. [useSessionStorage](#-useSessionStorage)
+6. [useFetch](#-usefetch)
+7. [useClickOutside](#-useclickoutside)
+8. [useCounter](#-usecounter)
+9. [useCookies](#-usecookies)
+10. [useIsHovered](#-useIsHovered)
+11. [useMediaQuery](#-usemediaquery)
+12. [useIsClient](#-useisclient)
+13. [useTitle](#%EF%B8%8F-usetitle)
+14. [useKeyPress](#%EF%B8%8F-usekeypress)
+15. [useRenderCount](#-userendercount)
+16. [useIsFirstRender](#-useisfirstrender)
+17. [useOrientation](#-useorientation)
+18. [useDevice](#-usedevice)
+19. [useLocation](#-uselocation)
+20. [useStack](#-usestack)
+21. [useList](#-uselist)
+22. [useQueue](#-usequeue)
+23. [useForceUpdate](#-useforceupdate)
+24. a little bit of creativity [useEventListener](#-useeventlistener)
 
 </br>
 
@@ -234,6 +235,54 @@ In this example, `useLocalStorage` is used to keep track of a 'username'. The ho
 
 1. `value` (_any_): The current state value retrieved from localStorage or the initial value.
 2. `setValue` (_function_): Function to update the state value and simultaneously update the corresponding localStorage item.
+
+</br>
+
+## 💾 useSessionStorage
+
+Custom hook that simplifies interacting with the browser's sessionStorage. It works similarly to `useState` but stores and retrieves the state from sessionStorage, ensuring data persistence across sessions.
+
+### Usage
+
+```jsx
+import React from 'react';
+import { useSessionStorage } from 'use-termite';
+
+const SessionStorageComponent = () => {
+  const [username, setUsername] = useSessionStorage('username', 'JohnDoe');
+  /*
+    If 'username' exists in sessionStorage, the value of the 'username' state 
+    will be sessionStorage.getItem('username'). If 'username' doesn't exist in 
+    sessionStorage, the value of the state will be 'JohnDoe', and a new item will
+    be created in sessionStorage with key 'username'.
+  */
+
+  const handleChange = event => {
+    setUsername(event.target.value);
+  };
+
+  return (
+    <div>
+      <input type='text' value={username} onChange={handleChange} />
+      <p>Username is {username}</p>
+    </div>
+  );
+};
+```
+
+In this example, `useSessionStorage` is used to keep track of a 'username'. The hook initializes the 'username' state from sessionStorage if available, otherwise sets it to a default value ('JohnDoe'). When the username is updated via `setUsername`, the new value is also saved to sessionStorage.
+
+### Parameters
+
+1. `key` (_String_): The key under which to store the value in sessionStorage.
+2. `initialValue` (_any_): Initial value for the state if not already set in sessionStorage.
+
+### Return value
+
+`[value, setValue]`
+
+1. `value` (_any_): The current state value retrieved from sessionStorage or the initial value.
+2. `setValue` (_function_): Function to update the state value and simultaneously update the corresponding sessionStorage item.
 
 </br>
 
