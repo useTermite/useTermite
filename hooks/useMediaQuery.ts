@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import isBrowser from '../lib/isBrowser';
 
 // This hook accepts a media query string and returns a boolean indicating whether the media query matches
 const useMediaQuery = (query: string): boolean => {
@@ -7,7 +8,7 @@ const useMediaQuery = (query: string): boolean => {
 
   useEffect(() => {
     // Ensure that window is defined (for SSR compatibility)
-    if (typeof window !== 'undefined') {
+    if (isBrowser) {
       // Create a MediaQueryList object
       const mediaQueryList = window.matchMedia(query);
 
@@ -25,7 +26,7 @@ const useMediaQuery = (query: string): boolean => {
         mediaQueryList.removeEventListener('change', documentChangeHandler);
       };
     }
-  }, [query]); // Only re-run effect if query changes
+  }, [query, window]); // Only re-run effect if query changes
 
   return matches;
 };

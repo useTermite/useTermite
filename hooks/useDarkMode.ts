@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import isBrowser from '../lib/isBrowser';
 
 // Define the possible modes as 'dark' or 'light'.
 type Mode = 'dark' | 'light';
@@ -34,16 +35,14 @@ const useDarkMode = (): DarkModeHook => {
 
   // Effect to update the HTML element and local storage whenever the mode changes.
   useEffect(() => {
-    /**
-     * Update the mode in local storage and the document's class list.
-     * @param {Mode} newMode - The new mode to be set.
-     */
     const updateMode = (newMode: Mode) => {
-      const classList = document.documentElement.classList;
-      // Update the class list on the HTML element.
-      newMode === 'dark' ? classList.add('dark') : classList.remove('dark');
-      // Persist the new mode in local storage.
-      localStorage.setItem('theme', newMode);
+      if (isBrowser) {
+        const classList = document.documentElement.classList;
+        // Update the class list on the HTML element.
+        newMode === 'dark' ? classList.add('dark') : classList.remove('dark');
+        // Persist the new mode in local storage.
+        localStorage.setItem('theme', newMode);
+      }
     };
 
     // Apply the mode update.
@@ -51,17 +50,21 @@ const useDarkMode = (): DarkModeHook => {
 
     // Synchronize mode across tabs.
     const handleStorageChange = () => {
-      const newMode = (localStorage.getItem('theme') as Mode) || 'light';
-      setMode(newMode);
+      if (isBrowser) {
+        const newMode = (localStorage.getItem('theme') as Mode) || 'light';
+        setMode(newMode);
+      }
     };
 
     // Listen for changes in local storage to synchronize tabs.
-    window.addEventListener('storage', handleStorageChange);
+    if (isBrowser) {
+      window.addEventListener('storage', handleStorageChange);
 
-    // Cleanup listener on component unmount.
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-    };
+      // Cleanup listener on component unmount.
+      return () => {
+        window.removeEventListener('storage', handleStorageChange);
+      };
+    }
   }, [mode]);
 
   // Function to toggle between 'light' and 'dark' modes.
