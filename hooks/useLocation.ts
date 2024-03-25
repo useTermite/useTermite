@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import isBrowser from '../lib/isBrowser';
 
 // Define the possible status messages
 type Status = 'idle' | 'pending' | 'success' | 'error';
@@ -39,7 +40,7 @@ const useLocation = (): LocationInfo => {
     // Request the current location
     if (navigator.geolocation) {
       setLocation(prevState => ({ ...prevState, status: 'pending' }));
-      navigator.geolocation.getCurrentPosition(updateLocation, handleError);
+      if (isBrowser) navigator.geolocation.getCurrentPosition(updateLocation, handleError);
     } else {
       setLocation(prevState => ({ ...prevState, status: 'error' }));
       console.error('Geolocation is not supported by this browser.');

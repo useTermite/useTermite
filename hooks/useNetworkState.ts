@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import isBrowser from '../lib/isBrowser';
 
 interface NetworkState {
   isOnline: boolean;
@@ -12,17 +13,19 @@ const useNetworkState = (): NetworkState => {
   });
 
   useEffect(() => {
-    const goOnline = () => setNetworkState({ isOnline: true, state: 'online' });
-    const goOffline = () => setNetworkState({ isOnline: false, state: 'offline' });
+    if (isBrowser) {
+      const goOnline = () => setNetworkState({ isOnline: true, state: 'online' });
+      const goOffline = () => setNetworkState({ isOnline: false, state: 'offline' });
 
-    window.addEventListener('online', goOnline);
-    window.addEventListener('offline', goOffline);
+      window.addEventListener('online', goOnline);
+      window.addEventListener('offline', goOffline);
 
-    return () => {
-      window.removeEventListener('online', goOnline);
-      window.removeEventListener('offline', goOffline);
-    };
-  }, []);
+      return () => {
+        window.removeEventListener('online', goOnline);
+        window.removeEventListener('offline', goOffline);
+      };
+    }
+  }, [window]);
 
   return networkState;
 };

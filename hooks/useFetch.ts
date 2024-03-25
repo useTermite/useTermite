@@ -1,11 +1,5 @@
 import { useEffect, useState } from 'react';
 
-/**
- * Custom hook for making HTTP requests using the Fetch API.
- * @param url - The URL for the HTTP request.
- * @param enabled - Flag indicating whether the request should be executed.
- * @returns An object containing the fetched data, error state, loading state, and a refresh function.
- */
 const useFetch = <T = any>(url: string, enabled: boolean = true) => {
   // State to store the fetched data.
   const [data, setData] = useState<T | null>(null);

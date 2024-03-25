@@ -8,6 +8,7 @@ interface CopyPasteFunctions {
 const useCopyPaste = (): CopyPasteFunctions => {
   // Function to copy text to the clipboard using the Clipboard API.
   const copyHandler = async (text: string): Promise<void> => {
+    if (typeof window === 'undefined') return;
     try {
       await navigator.clipboard.writeText(text);
     } catch (error) {

@@ -11,36 +11,42 @@ interface CookieOptions {
 const useCookies = () => {
   // Get a cookie value by its name
   const getCookie = (name: string): string | undefined => {
-    const matches = document.cookie.match(
-      new RegExp('(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)')
-    );
-    return matches ? decodeURIComponent(matches[1]) : undefined;
+    if (typeof window !== 'undefined') {
+      const matches = document.cookie.match(
+        new RegExp('(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)')
+      );
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
   };
 
   // Set a cookie with a name, value, and optional options
   const setCookie = (name: string, value: string, options: CookieOptions = {}): void => {
-    let cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
+    if (typeof window !== 'undefined') {
+      let cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
 
-    // Append each option to the cookie string
-    Object.entries(options).forEach(([key, val]) => {
-      cookieString += `; ${key}`;
-      if (val !== true) {
-        // Check if 'expires' is a Date object and convert to UTC string
-        if (key === 'expires' && val instanceof Date) {
-          cookieString += `=${val.toUTCString()}`;
-        } else {
-          cookieString += `=${val}`;
+      // Append each option to the cookie string
+      Object.entries(options).forEach(([key, val]) => {
+        cookieString += `; ${key}`;
+        if (val !== true) {
+          // Check if 'expires' is a Date object and convert to UTC string
+          if (key === 'expires' && val instanceof Date) {
+            cookieString += `=${val.toUTCString()}`;
+          } else {
+            cookieString += `=${val}`;
+          }
         }
-      }
-    });
+      });
 
-    document.cookie = cookieString;
+      document.cookie = cookieString;
+    }
   };
 
   // Delete a cookie by its name
   const deleteCookie = (name: string): void => {
-    // Setting maxAge to -1 to expire the cookie immediately
-    setCookie(name, '', { maxAge: -1 });
+    if (typeof window !== 'undefined') {
+      // Setting maxAge to -1 to expire the cookie immediately
+      setCookie(name, '', { maxAge: -1 });
+    }
   };
 
   return { getCookie, setCookie, deleteCookie };

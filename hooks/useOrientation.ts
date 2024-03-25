@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import isBrowser from '../lib/isBrowser';
 
 // Define the types for the orientation state.
 type OrientationState = 'portrait' | 'landscape';
@@ -23,21 +24,23 @@ const useOrientation = (): Orientation => {
   const [orientation, setOrientation] = useState<OrientationState>(getOrientation());
 
   useEffect(() => {
-    // Define a function to handle the change in orientation.
-    const handleOrientationChange = () => {
-      // Update the orientation state when the orientation changes.
-      setOrientation(getOrientation());
-    };
+    if (isBrowser) {
+      // Define a function to handle the change in orientation.
+      const handleOrientationChange = () => {
+        // Update the orientation state when the orientation changes.
+        setOrientation(getOrientation());
+      };
 
-    // Add an event listener to the screen.orientation object.
-    // This will call handleOrientationChange whenever the screen's orientation changes.
-    window.screen.orientation.addEventListener('change', handleOrientationChange);
+      // Add an event listener to the screen.orientation object.
+      // This will call handleOrientationChange whenever the screen's orientation changes.
+      window.screen.orientation.addEventListener('change', handleOrientationChange);
 
-    // Cleanup function to remove the event listener when the component unmounts or re-renders.
-    return () => {
-      window.screen.orientation.removeEventListener('change', handleOrientationChange);
-    };
-  }, []); // Empty dependency array means this effect runs once on mount.
+      // Cleanup function to remove the event listener when the component unmounts or re-renders.
+      return () => {
+        window.screen.orientation.removeEventListener('change', handleOrientationChange);
+      };
+    }
+  }, [window]); // Empty dependency array means this effect runs once on mount.
 
   // Return an object containing the current orientation state and booleans for quick checks.
   return {

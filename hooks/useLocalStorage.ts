@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import isBrowser from '../lib/isBrowser';
 
 // Custom hook for persisting state to localStorage.
 // It synchronizes the given state with a key in the browser's localStorage, allowing the state to persist through page refreshes.
@@ -8,7 +9,7 @@ const useLocalStorage = <T = any>(key: string, initialValue: T | (() => T)) => {
   // or initialize it with the provided initialValue if no value is found.
   const [value, setValue] = useState<T>(() => {
     // Attempt to retrieve the existing value from localStorage using the provided key.
-    const JsonValue = localStorage.getItem(key);
+    const JsonValue = isBrowser ? localStorage.getItem(key) : null;
 
     // If a value is found, parse the JSON stored in localStorage and return it.
     if (JsonValue != null) {
@@ -26,7 +27,7 @@ const useLocalStorage = <T = any>(key: string, initialValue: T | (() => T)) => {
 
   // useEffect is used to update the localStorage item whenever the key or the value changes.
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.localStorage) {
+    if (isBrowser && window.localStorage) {
       // When the value or key changes, update the corresponding item in localStorage with the new value.
       localStorage.setItem(key, JSON.stringify(value));
     }
