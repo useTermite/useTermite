@@ -9,11 +9,6 @@ interface DarkModeHook {
   toggle: () => void; // Function to toggle the theme mode.
 }
 
-/**
- * Get the initial theme mode from system preferences or local storage,
- * defaults to 'light' if none is found.
- * @returns {Mode} - The initial theme mode.
- */
 const getInitialMode = (): Mode => {
   // Check for system preference for dark mode.
   const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -26,10 +21,6 @@ const getInitialMode = (): Mode => {
   }
 };
 
-/**
- * Custom hook for managing and persisting a theme mode across the application.
- * @returns {DarkModeHook} - The current mode and a function to toggle the mode.
- */
 const useDarkMode = (): DarkModeHook => {
   // State to keep track of the current mode.
   const [mode, setMode] = useState<Mode>('light');
