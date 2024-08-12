@@ -4,6 +4,8 @@ const useFetch = <T = any>(url: string, enabled: boolean = true) => {
   // State to store the fetched data.
   const [data, setData] = useState<T | null>(null);
 
+  console.log('data', data);
+
   // States for handling error and loading states.
   const [isError, setIsError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
